@@ -67,7 +67,7 @@ model.save('./model/k51_1_model1.h5')
 
 # EarlyStopping
 from keras.callbacks import EarlyStopping,ModelCheckpoint
-modelpath = './modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 5,mode = 'auto')
 check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
 

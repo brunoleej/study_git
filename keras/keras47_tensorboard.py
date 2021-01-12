@@ -65,10 +65,10 @@ model = Model(inputs = input1, outputs = net, name = 'CNN_Model')
 
 # EarlyStopping
 from keras.callbacks import EarlyStopping,ModelCheckpoint,TensorBoard
-# modelpath = './modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 20,mode = 'auto')
-# check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
-# tensor_board = TensorBoard(log_dir ='./graph',histogram_freq=0,write_graph=True,write_images=True)
+check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
+tensor_board = TensorBoard(log_dir ='../graph',histogram_freq=0,write_graph=True,write_images=True)
 
 # Compile
 model.compile(loss = 'sparse_categorical_crossentropy',optimizer = 'adam',metrics = ['acc'])
@@ -104,6 +104,3 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(loc='upper right')
 plt.show()
-
-# 과제
-# 1. matplotlib 한글처리 

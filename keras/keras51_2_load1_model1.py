@@ -61,12 +61,12 @@ from keras.models import Model,load_model
 # net = Dense(10)(net)
 # net = Activation('softmax')(net)
 # model = Model(inputs = input1, outputs = net, name = 'CNN_Model')
-model = load_model('./model/k51_1_model1.h5')
+model = load_model('../model/k51_1_model1.h5')
 
 model.summary()
 # EarlyStopping
 from keras.callbacks import EarlyStopping,ModelCheckpoint
-modelpath = './modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 5,mode = 'auto')
 check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
 

@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
 
-train_images = np.load('./data/fashion_mnist_x_train.npy')
-train_labels = np.load('./data/fashion_mnist_y_train.npy')
-test_images = np.load('./data/fashion_mnist_x_test.npy')
-test_labels = np.load('./data/fashion_mnist_y_test.npy')
+train_images = np.load('../data/fashion_mnist_x_train.npy')
+train_labels = np.load('../data/fashion_mnist_y_train.npy')
+test_images = np.load('../data/fashion_mnist_x_test.npy')
+test_labels = np.load('../data/fashion_mnist_y_test.npy')
 
 print(train_images.shape,test_images.shape) # (60000, 28, 28) (10000, 28, 28)
 print(train_labels.shape,test_labels.shape) # (60000,) (10000,)

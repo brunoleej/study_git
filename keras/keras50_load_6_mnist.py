@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
 
-x_train = np.load('./data/mnist_x_train.npy')
-y_train = np.load('./data/mnist_y_train.npy')
-x_test = np.load('./data/mnist_x_test.npy')
-y_test = np.load('./data/mnist_y_test.npy')
+x_train = np.load('../data/mnist_x_train.npy')
+y_train = np.load('../data/mnist_y_train.npy')
+x_test = np.load('../data/mnist_x_test.npy')
+y_test = np.load('../data/mnist_y_test.npy')
 
 print(x_train.shape,y_train.shape)  # (60000, 28, 28) (60000,)
 print(x_test.shape,y_test.shape)    # (10000, 28, 28) (10000,)    

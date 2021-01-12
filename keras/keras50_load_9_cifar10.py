@@ -1,10 +1,10 @@
 import numpy as np
 import tensorflow as tf
 
-c10_x_train = np.load('./data/c10_x_train.npy')
-c10_y_train = np.load('./data/c10_y_train.npy')
-c10_x_test = np.load('./data/c10_x_test.npy')
-c10_y_test = np.load('./data/c10_y_test.npy')
+c10_x_train = np.load('../data/c10_x_train.npy')
+c10_y_train = np.load('../data/c10_y_train.npy')
+c10_x_test = np.load('../data/c10_x_test.npy')
+c10_y_test = np.load('../data/c10_y_test.npy')
 print(c10_x_train.shape,c10_x_test.shape)   # (50000, 32, 32, 3) (10000, 32, 32, 3)
 print(np.min(c10_x_train),np.max(c10_x_test))   #  0 255
 

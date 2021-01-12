@@ -1,7 +1,7 @@
 import numpy as np
 
-data = np.load('./data/diabetes_data.npy')
-target = np.load('./data/diabetes_target.npy')
+data = np.load('../data/diabetes_data.npy')
+target = np.load('../data/diabetes_target.npy')
 
 print(data.shape, target.shape)         #(442, 10) (442,) input = 10, output = 1
 print(np.min(data), np.max(target))     # 0.198787989657293 25.0  ---> 전처리 해야 함

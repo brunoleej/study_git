@@ -74,7 +74,7 @@ from keras.models import Model,load_model
 # # fit
 # hist = model.fit(x_train,y_train,epochs = 30,validation_split=0.2,batch_size = 64,callbacks=[early_stopping,check_point])
 
-model = load_model('./model/k51_1_model2.h5')
+model = load_model('../model/k51_1_model2.h5')
 
 # Evaluate
 loss = model.evaluate(x_test,y_test,batch_size = 64)

@@ -21,5 +21,5 @@ print(iris.filename)
 
 print(type(data),type(target))  # <class 'numpy.ndarray'> <class 'numpy.ndarray'>
 
-# np.save('./data/iris_data.npy',arr = data)
-# np.save('./data/iris_target.npy',arr = target)
+np.save('../data/iris_data.npy',arr = data)
+np.save('../data/iris_target.npy',arr = target)

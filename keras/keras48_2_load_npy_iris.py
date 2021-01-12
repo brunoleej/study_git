@@ -1,7 +1,7 @@
 import numpy as np
 
-data = np.load('./data/iris_data.npy')
-target = np.load('./data/iris_target.npy')
+data = np.load('../data/iris_data.npy')
+target = np.load('../data/iris_target.npy')
 
 print(data)
 print(target)

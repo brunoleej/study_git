@@ -1,7 +1,7 @@
 import numpy as np
 
-data = np.load('./data/iris_data.npy')
-target = np.load('./data/iris_target.npy')
+data = np.load('../data/iris_data.npy')
+target = np.load('../data/iris_target.npy')
 
 # Preprocessing
 from sklearn.model_selection import train_test_split
