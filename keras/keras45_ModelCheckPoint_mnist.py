@@ -79,6 +79,10 @@ print('accuracy: ',loss[1])
 
 # visualization
 import matplotlib.pyplot as plt
+import matplotlib 
+matplotlib.rcParams['axes.unicode_minus'] = False 
+matplotlib.rcParams['font.family'] = "AppleGothic"
+
 plt.figure(figsize = (10,6))
 plt.subplot(211)    # 2 row 1 column
 plt.plot(hist.history['loss'],marker = '.',c='red',label = 'loss')
