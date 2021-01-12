@@ -62,7 +62,7 @@ model = Model(inputs = input1, outputs = net, name = 'CNN_Model')
 
 # EarlyStopping
 from keras.callbacks import EarlyStopping,ModelCheckpoint
-modelpath = '../modelCheckpoint/k45_mnist_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_mnist_kor_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 5,mode = 'auto')
 check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
 
@@ -79,28 +79,28 @@ print('accuracy: ',loss[1])
 
 # visualization
 import matplotlib.pyplot as plt
-plt.figure(figsize = (10,6))
-plt.subplot(211)    # 2 row 1 column
-plt.plot(hist.history['loss'],marker = '.',c='red',label = 'loss')
-plt.plot(hist.history['val_loss'],marker = '.',c='blue',label = 'val_loss')
+plt.rc('font',family='Malgun Gothic')
+
+plt.figure(figsize=(10,6))  
+plt.subplot(2,1,1)    # 2행 1열 1번째
+plt.plot(hist.history['val_loss'], marker='.', c='blue', label='val_loss')
 plt.grid()
 
-plt.title('Cost')
+plt.title('손실비용') # 과제 : 한글 깨짐 오류 해결할 것
+# plt.title('Cost Loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend(loc='upper right')
 
-plt.subplot(212)    # 2 row 2 column
-plt.plot(hist.history['acc'],marker = '.',c='red')
-plt.plot(hist.history['val_acc'],marker = '.',c='blue')
-plt.grid()
+plt.subplot(2, 1, 2)    # 2행 1열 2번째
+plt.plot(hist.history['acc'], marker='.', c='red', label='accuracy')
+plt.plot(hist.history['val_acc'], marker='.', c='blue', label='val_accuracy')
+plt.grid()           
 
-plt.title('Accuracy')
+plt.title('정확도')   
+# plt.title('Accuracy')
 plt.ylabel('accuracy')
 plt.xlabel('epoch')
-plt.legend(['accuracy','val_accuracy'])
+plt.legend(loc='upper right')
 plt.show()
-
-# 과제
-# 1. matplotlib 한글처리 
 

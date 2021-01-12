@@ -48,9 +48,9 @@ model.compile(loss = 'categorical_crossentropy',metrics = ['acc'])
 
 # Earlystooping, ModelCheckpoint
 from keras.callbacks import EarlyStopping,ModelCheckpoint
-# modelpath = './modelCheckpoint/k45_cifar100_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_cifar100_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 20,mode = 'auto')
-# check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
+check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
 
 # fit
 hist = model.fit(x_train,y_train,batch_size = 32,validation_split=0.2,epochs = 10,callbacks=[early_stopping,check_point])

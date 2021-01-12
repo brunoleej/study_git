@@ -52,9 +52,9 @@ model.compile(loss='mse', optimizer='adam',metrics=['mae'] )
 
 # Earlystooping, ModelCheckpoint
 from keras.callbacks import EarlyStopping,ModelCheckpoint
-# modelpath = './modelCheckpoint/k45_diabets_{epoch:02d}-{val_loss:.4f}.hdf5'
+modelpath = '../modelCheckpoint/k45_diabets_{epoch:02d}-{val_loss:.4f}.hdf5'
 early_stopping = EarlyStopping(monitor='val_loss',patience = 20,mode = 'auto')
-# check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
+check_point = ModelCheckpoint(filepath=modelpath,monitor='val_loss',save_best_only=True,mode='auto')
 
 # fit
 hist = model.fit(x_train, y_train, epochs=5000, batch_size=5, validation_split = 0.2,callbacks=[early_stopping,check_point] )
