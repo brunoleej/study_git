@@ -46,4 +46,4 @@ print('accuracy: ',acc)
 
 # ConV1D
 # loss :  4.624215126037598
-# accuracy:  0.2354000061750412
+# accuracy:  0.2354000061750422
