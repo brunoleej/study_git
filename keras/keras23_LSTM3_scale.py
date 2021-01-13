@@ -1,6 +1,5 @@
 import numpy as np
 from tensorflow.keras import callbacks
-from tensorflow.python.keras.layers.recurrent import LSTM
 
 # 1. Data
 x = np.array([[1,2,3],[2,3,4],[3,4,5],[4,5,6],
