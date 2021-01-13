@@ -1,64 +1,113 @@
-# LSTM와 비교
+# boston : Regression Problem
+# Moudule import 
 import numpy as np
 import tensorflow as tf
-from keras.datasets import fashion_mnist
+from sklearn.datasets import load_boston
 
-# preprocessing
-(train_images,train_labels),(test_images,test_labels) = fashion_mnist.load_data()
-print(train_images.shape,test_images.shape) # (60000, 28, 28) (10000, 28, 28)
-print(train_labels.shape,test_labels.shape) # (60000,) (10000,)
-print(np.min(train_images),np.max(test_images)) # 0 255
-train_images,test_images = train_images / 255.0, test_images / 255.0
-print(np.min(train_images),np.max(test_images)) # 0.0 1.0
-train_images = train_images[...,tf.newaxis]
-test_images = test_images[...,tf.newaxis]
-print(train_images.shape,test_images.shape) # (60000, 28, 28, 1) (10000, 28, 28, 1)
+# Data
+boston = load_boston()
+data = boston.data
+target = boston.target
 
-# to_categorical
-from tensorflow.keras.utils import to_categorical
-train_labels = to_categorical(train_labels)
-test_labels = to_categorical(test_labels)
+print(data.shape) # (506, 13)
+print(target.shape)  # (506, )
+# print("=================")
+# print(x[:5]) 
+# print(y[:10])
+# print(np.max(x), np.min(x)) # 711.0  0,0
+# print(dataset.feature_names)
+
+# Preprocessing
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(data, target, train_size = 0.8, random_state = 66)
+print(x_train.shape,x_test.shape)   # (404, 13) (102, 13)
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(x_train)
+x_train = scaler.transform(x_train)
+x_test = scaler.transform(x_test)
+
+x_train = x_train.reshape(x_train.shape[0],x_train.shape[1],1)
+x_test = x_test.reshape(x_test.shape[0],x_test.shape[1],1)
+
+print(y_train.shape) # (404, 1)
 
 # Modeling
-from tensorflow.keras.layers import Conv1D,MaxPool1D,Dense,Dropout,Activation,Flatten,Input
-from tensorflow.keras.models import Model
-
-# Fully Connected
-input1 = Input(shape=(28,28,1))
-net = Conv1D(32,3,padding='SAME')(input1)
-net = Activation('relu')(net)
-net = Conv1D(32,3,padding='SAME')(net)
-net = Activation('relu')(net)
-net = MaxPool1D(pool_size = 1)(net)
-net = Dropout(0.25)(net)
-
-net = Conv1D(64,3,padding='SAME')(net)
-net = Activation('relu')(net)
-net = Conv1D(64,3,padding='SAME')(net)
-net = Activation('relu')(net)
-net = MaxPool1D(pool_size = 1)(net)
-net = Dropout(0.25)(net)
-
-net = Flatten()(net)
-net = Dense(512)(net)
-net = Activation('relu')(net)
-net = Dropout(0.5)(net)
-net = Dense(10)(net)
-net = Activation('softmax')(net)
-
-model = Model(inputs = input1,outputs = net,name = 'fashion_mnist_CNN')
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Conv1D(32,3,activation='relu',input_shape=(13,1)),
+    tf.keras.layers.Conv1D(32,6,activation='relu'),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(128,activation = 'relu'),
+    tf.keras.layers.Dense(1)
+])
 
 # Compile
-model.compile(loss = 'categorical_crossentropy',optimizer='adam',metrics = ['acc'])
+model.compile(loss = 'mse', optimizer = 'adam', metrics = ['mae'])
 
-# fit
-model.fit(train_images,train_labels,epochs=5,batch_size=64)
+# Early Stopping
+from tensorflow.keras.callbacks import EarlyStopping
+es = EarlyStopping(monitor = 'loss', patience=20, mode='min') 
+# Fit
+model.fit(x_train, y_train, batch_size = 32, callbacks=[es], epochs=2000, validation_split=0.2)
 
-# evaluate
-loss,acc = model.evaluate(test_images,test_labels,batch_size = 64)
-print('loss: ', loss)
-print('acc: ', acc)
+# Evaluate
+loss,mae = model.evaluate(x_test, y_test, batch_size=32)
+print("loss: ", loss)
+print('mae: ',mae)
 
-# CNN
-# loss:  0.20688886940479279
-# acc:  0.9332000112533569
+# prediction
+y_predict = model.predict(x_test)
+
+# RMSE
+from sklearn.metrics import mean_squared_error
+def RMSE(y_test, y_predict) : 
+    return np.sqrt(mean_squared_error(y_test, y_predict))
+print("RMSE : ", RMSE(y_test, y_predict))
+
+# R2_score
+from sklearn.metrics import r2_score
+r2 = r2_score(y_test, y_predict)
+print("R2 : ", r2)
+
+# early_stopping (5)
+# loss :  10.76313304901123
+# mae :  2.4629220962524414
+# RMSE :  3.2807214371463127
+# R2 :  0.8712281059778333
+
+# early_stopping (10) 
+# loss :  8.8392915725708
+# mae :  2.440977096557617
+# RMSE :  2.973094694598015
+# R2 :  0.8942452569241743
+
+# early_stopping (20) 
+# loss :  6.976583957672119
+# mae :  2.0358965396881104
+# RMSE :  2.6413223452327177
+# R2 :  0.91653100556001
+
+# CNN model
+# loss:  21.7302303314209
+# mse:  3.436227560043335
+# RMSE:  4.6615693080766
+# R2:  0.7145729875723015
+
+# CNN model final output Activation 'linear'
+# loss:  21.139278411865234
+# mse:  3.452582836151123
+# RMSE:  4.597746488205329
+# R2:  0.7020289867320698
+
+# CNN model final output Activation 'linear'(second try)
+# loss:  21.682680130004883
+# mse:  3.6008100509643555
+# RMSE:  4.6564665050609255
+# R2:  0.7518755394965633
+
+# Conv1D
+# loss:  9.405016899108887
+# mae:  2.1731979846954346
+# RMSE :  3.066760183546865
+# R2 :  0.88747681855145

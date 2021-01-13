@@ -41,7 +41,7 @@ net = Conv2D(32,3,3,padding='SAME')(net)
 net = Activation('relu')(net)
 net = Dropout(0.25)(net)
 
-net = Conv2D(64,3,3,padding='SAME')(input1)
+net = Conv2D(64,3,3,padding='SAME')(net)
 net = Activation('relu')(net)
 net = Conv2D(64,3,3,padding='SAME')(net)
 net = Activation('relu')(net)

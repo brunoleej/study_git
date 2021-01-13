@@ -1,6 +1,7 @@
 # 코딩하시오 Conv1D
 # result : 80
 import numpy as np
+import tensorflow as tf
 
 # Data
 x = np.array([[1,2,3],[2,3,4],[3,4,5],[4,5,6],
@@ -10,30 +11,24 @@ x = np.array([[1,2,3],[2,3,4],[3,4,5],[4,5,6],
 y = np.array([4,5,6,7,8,9,10,11,12,13,50,60,70])
 x_pred = np.array([50,60,70])
 
-# LSTM
-# result => 80
 print(x.shape,y.shape) # (13, 3) (13,)
-x = x.reshape((13,3,1,1))
+x = x.reshape((13,3,1)).astype('float32')
 print(x)
 print(x.shape)
 
 # Model
-from tensorflow.keras.layers import Dense,LSTM,Conv1D
-from tensorflow.keras.models import Sequential
-model = Sequential([
-    Conv1D(32,3,padding = 'SAME',input_shape = (3,1,1)),
-    LSTM(10,activation = 'relu'),
-    Dense(30),
-    Dense(20),
-    Dense(10,activation = 'relu'),
-    Dense(5),
-    Dense(1)
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Conv1D(2,2,padding = 'SAME',input_shape = (3,1)),
+    tf.keras.layers.LSTM(30,activation = 'relu'),
+    tf.keras.layers.Dense(30),
+    tf.keras.layers.Dense(20),
+    tf.keras.layers.Dense(5),
+    tf.keras.layers.Dense(1)
 ])
 # print(model.summary())
 
 # Earlystopping
-from keras.callbacks import EarlyStopping
-early_stopping = EarlyStopping(monitor = 'loss',patience=20,mode = 'auto')
+early_stopping = tf.keras.callbacks.EarlyStopping(monitor = 'loss',patience=20,mode = 'auto')
 
 # Compile, Train
 model.compile(loss = 'mse',optimizer = 'adam')
@@ -52,3 +47,7 @@ print('y_pred: ',y_pred)
 
 # loss:  0.05855182558298111
 # y_pred:  [[80.57456]]
+
+# Conv1D
+# loss:  0.3846977949142456
+# y_pred:  [[80.82802]]

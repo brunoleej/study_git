@@ -92,8 +92,8 @@ y_predict = model.predict(x_test)
 
 # RMSE
 from sklearn.metrics import mean_squared_error
-def RMSE (y_test, y_train) :
-    return np.sqrt(mean_squared_error(y_test, y_train))
+def RMSE (y_test, y_predict) :
+    return np.sqrt(mean_squared_error(y_test, y_predict))
 print("RMSE : ", RMSE(y_test, y_predict))
 
 # R2
@@ -130,3 +130,9 @@ print("R2 : ", R2)
 # mae :  1.740808367729187
 # RMSE :  2.2629422013656915
 # R2 :  0.9387326221093001 
+
+# Conv1D
+# loss :  10.818355560302734
+# mae :  2.536684036254883
+# RMSE :  3.289127135975013
+# R2 :  0.8705673949497367
