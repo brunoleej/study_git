@@ -1,6 +1,8 @@
+# 코딩하시오 Conv1D
+# result : 80
 import numpy as np
 
-# 1. Data
+# Data
 x = np.array([[1,2,3],[2,3,4],[3,4,5],[4,5,6],
               [5,6,7],[6,7,8],[7,8,9],[8,9,10],
               [9,10,11],[10,11,12],
@@ -11,15 +13,16 @@ x_pred = np.array([50,60,70])
 # LSTM
 # result => 80
 print(x.shape,y.shape) # (13, 3) (13,)
-x = x.reshape((13,3,1)).astype('float32')
+x = x.reshape((13,3,1,1))
 print(x)
 print(x.shape)
 
 # Model
-from tensorflow.keras.layers import Dense,LSTM
+from tensorflow.keras.layers import Dense,LSTM,Conv1D
 from tensorflow.keras.models import Sequential
 model = Sequential([
-    LSTM(10,activation = 'relu',input_shape=(3,1)),
+    Conv1D(32,3,padding = 'SAME',input_shape = (3,1,1)),
+    LSTM(10,activation = 'relu'),
     Dense(30),
     Dense(20),
     Dense(10,activation = 'relu'),
