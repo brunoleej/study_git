@@ -21,7 +21,7 @@ print(df)
 # DataFrame 생성 2(list의 Dictionary)
 datas = [
     {"name":'dss','email':'dss@gmail.com'},
-    {"name":'camp','email':'camp@gmail.com'}
+    {"name":'camp','email':'camp@daum.com'}
 ]
 print(datas)    # [{'name': 'dss', 'email': 'dss@gmail.com'}, {'name': '', 'email': 'dss@gmail.com'}]
 
@@ -124,3 +124,22 @@ print(df.head())    # Default : 5
 
 print(df.tail())    # Default : 5
 # print(df.tail(n=3))
+
+print('===========================')
+print(df)
+'''
+   id  name           email
+0   1   dss   dss@gmail.com
+1   2  camp  camp@gmail.com
+2   3  andy  andy@naver.com
+'''
+
+df['domain'] = df['email'].apply(lambda email : email.split('@')[1].split('.')[0])
+print('===========================')
+print(df)
+'''
+   id  name           email domain
+0   1   dss   dss@gmail.com  gmail
+1   2  camp   camp@daum.com   daum
+2   3  andy  andy@naver.com  naver
+'''
