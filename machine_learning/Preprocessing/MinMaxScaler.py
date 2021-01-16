@@ -75,3 +75,8 @@ test_scaled = scaler.transform(test_array)
 # test_array의 scale 변환 출력
 print('원본 test_array 데이터: ',np.round(test_array.reshape(-1),2))
 print('Scale된 test_array 데이터: ',np.round(test_scaled.reshape(-1),2))
+
+'''
+원본 test_array 데이터:  [0 1 2 3 4 5]
+Scale된 test_array 데이터:  [0.  0.2 0.4 0.6 0.8 1. ]
+'''
