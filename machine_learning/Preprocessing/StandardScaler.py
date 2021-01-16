@@ -7,7 +7,7 @@ from sklearn.datasets import load_iris
 iris = load_iris()
 data = iris.data
 
-iris_df = pd.DataFrame(data=iris.data,columns = iris.feature_names)
+iris_df = pd.DataFrame(data=data,columns = iris.feature_names)
 
 print('feature 들의 평균 값')
 print(iris_df.mean())
