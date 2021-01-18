@@ -1,5 +1,4 @@
 import numpy as np
-from tensorflow.keras import callbacks
 
 a = np.array(range(1,11))
 size = 5
