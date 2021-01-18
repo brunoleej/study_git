@@ -1,9 +1,7 @@
 # keras45_mnist2_cnn.py copy()
-
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-
 
 EPOCHS = 5
 batch_size = 32
@@ -49,7 +47,6 @@ class MyModel(tf.keras.Model):
 
 # Data
 mnist = tf.keras.datasets.mnist
-
 (x_train,y_train),(x_test,y_test) = mnist.load_data()
 
 x_train = tf.cast(x_train,dtype='float32')
@@ -63,7 +60,6 @@ x_test = x_test/255.
 
 train_ds = tf.data.Dataset.from_tensor_slices((x_train,y_train)).shuffle(10000).batch(32).prefetch(1024)
 test_ds = tf.data.Dataset.from_tensor_slices((x_test,y_test)).batch(32).prefetch(1024)
-
 
 # Model
 model = MyModel()
@@ -82,7 +78,7 @@ model.compile(loss = 'sparse_categorical_crossentropy',metrics = ['acc'])
 hist = model.fit(train_ds,validation_data = test_ds,epochs = EPOCHS,batch_size = batch_size,callbacks=[early_stopping,check_point,reduce_lr])
 
 # Evaluate
-loss = model.evaluate(x_test,y_test,batch_size = 64)
+loss = model.evaluate(train_ds,test_ds,batch_size = 64)
 print('loss : ',loss[0])
 print('accuracy: ',loss[1])
 
@@ -114,3 +110,5 @@ plt.xlabel('epoch')
 plt.legend(['accuracy','val_accuracy'])
 plt.show()
 
+# loss :  0.03266778588294983
+# accuracy:  0.989799976348877
