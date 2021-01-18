@@ -1,4 +1,4 @@
-# keras40_mnist2_cnn.py cope()
+# keras40_mnist2_cnn.py copy()
 
 import numpy as np
 import tensorflow as tf
