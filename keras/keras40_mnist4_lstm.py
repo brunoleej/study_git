@@ -12,6 +12,8 @@ from tensorflow.keras.datasets import mnist
 # preprocessing
 (x_train,y_train),(x_test,y_test) = mnist.load_data()
 print(x_train.shape,x_test.shape)   # (60000, 28, 28) (10000, 28, 28)
+print(y_train.shape,y_test.shape)   # (60000,) (10000,)
+
 print(np.min(x_train),np.max(x_test))   # 0 255
 x_train,x_test = x_train / 255.0, x_test / 255.0
 print(np.min(x_train),np.max(x_test)) # 0.0 1.0
@@ -59,4 +61,3 @@ model.fit(x_train,y_train,epochs = 5,batch_size = 64)
 loss, acc = model.evaluate(x_test,y_test,batch_size = 64)
 print('loss: ',loss)
 print('acc: ', acc)
-

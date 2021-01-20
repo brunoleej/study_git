@@ -22,7 +22,7 @@ class MyModel(tf.keras.Model):
         return self.dense4(x)
 
 # Data
-mnist = tf.keras.datasets.mnist
+mnist = tf.keras.datasetsㅏㄷ.mnist
 (x_train,y_train),(x_test,y_test) = mnist.load_data()
 
 x_train = tf.cast(x_train,dtype='float32')
