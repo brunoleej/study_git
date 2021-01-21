@@ -28,12 +28,18 @@ print(np.max(x[0])) # max = 396.9 ??? 최댓값 711 인데 왜 396 이 나왔을
 
 
 # Preprocessing
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
+from sklearn.preprocessing import MinMaxScaler,StandardScaler
+scaler = StandardScaler()
 scaler.fit(x)
-x = scaler.transform(x)     
-print(np.max(x), np.min(x)) 
-print(np.max(x[0]))       
+x = scaler.transform(x)    
+
+# # MinMax 
+# print(np.max(x), np.min(x)) # 1.0 0.0
+# print(np.max(x[0])) # 0.9999999999999999
+
+# Standard
+print(np.max(x), np.min(x)) # 9.933930601860268 -3.9071933049810337
+print(np.max(x[0])) # 0.44105193260704206
 
 # # train_test_split
 # from sklearn.model_selection import train_test_split
