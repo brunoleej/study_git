@@ -41,66 +41,72 @@ x = scaler.transform(x)
 print(np.max(x), np.min(x)) # 9.933930601860268 -3.9071933049810337
 print(np.max(x[0])) # 0.44105193260704206
 
-# # train_test_split
-# from sklearn.model_selection import train_test_split
-# x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.8, shuffle = True, random_state=66)
+# train_test_split
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, train_size = 0.8, shuffle = True, random_state=66)
 
-# # Modeling
-# from tensorflow.keras.models import Sequential
-# from tensorflow.keras.layers import Dense
+# Modeling
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
 
-# model = Sequential([
-#     Dense(128,activation = 'relu',input_dim = 13),
-#     # model.add(Dense(10, activation='relu',input_shape=(13,))
-#     Dense(128),
-#     Dense(64),
-#     Dense(64),
-#     Dense(32),
-#     Dense(32),
-#     Dense(16),
-#     Dense(16),
-#     Dense(8),
-#     Dense(1)
-# ])
+model = Sequential([
+    Dense(128,activation = 'relu',input_dim = 13),
+    # model.add(Dense(10, activation='relu',input_shape=(13,))
+    Dense(128),
+    Dense(64),
+    Dense(64),
+    Dense(32),
+    Dense(32),
+    Dense(16),
+    Dense(16),
+    Dense(8),
+    Dense(1)
+])
 
-# # Compile, fit
-# model.compile(loss='mse', optimizer='adam', metrics=['mae'])
-# model.fit(x_train, y_train, epochs=150, batch_size=8, validation_split=0.1, verbose=1)
+# Compile, fit
+model.compile(loss='mse', optimizer='adam', metrics=['mae'])
+model.fit(x_train, y_train, epochs=150, batch_size=8, validation_split=0.1, verbose=1)
 
-# #4. Evaluate
-# loss, mae = model.evaluate(x_test, y_test, batch_size=8)
-# print("loss : ", loss)
-# print("mae : ", mae)
+#4. Evaluate
+loss, mae = model.evaluate(x_test, y_test, batch_size=8)
+print("loss : ", loss)
+print("mae : ", mae)
 
-# # Prediction
-# y_predict = model.predict(x_test)
-# # print("y_pred : \n", y_predict)
+# Prediction
+y_predict = model.predict(x_test)
+# print("y_pred : \n", y_predict)
 
-# # RMSE
-# from sklearn.metrics import mean_squared_error
-# def RMSE (y_test, y_train) :
-#     return np.sqrt(mean_squared_error(y_test, y_train))
-# print("RMSE : ", RMSE(y_test, y_predict))
+# RMSE
+from sklearn.metrics import mean_squared_error
+def RMSE (y_test, y_train) :
+    return np.sqrt(mean_squared_error(y_test, y_train))
+print("RMSE : ", RMSE(y_test, y_predict))
 
-# # R2
-# from sklearn.metrics import r2_score
-# R2 = r2_score(y_test, y_predict)
-# print("R2 : ", R2)
+# R2
+from sklearn.metrics import r2_score
+R2 = r2_score(y_test, y_predict)
+print("R2 : ", R2)
 
-# # 전처리 전
-# # loss :  32.70256042480469
-# # mae :  4.830300331115723
-# # RMSE :  5.718615214569833
-# # R2 :  0.6087411974708226
+# Before Preprocessing
+# loss :  32.70256042480469
+# mae :  4.830300331115723
+# RMSE :  5.718615214569833
+# R2 :  0.6087411974708226
 
-# # 전처리 후 (x = x/711. 일 때) -> 성능 좋아짐
-# # loss :  12.675890922546387
-# # mae :  2.6301143169403076
-# # RMSE :  3.560321795335871
-# # R2 :  0.8483435532299526
+# After Preprocessing (x = x/711. 일 때)
+# loss :  12.675890922546387
+# mae :  2.6301143169403076
+# RMSE :  3.560321795335871
+# R2 :  0.8483435532299526
 
-# # 전처리 후 (MinMaxScaler 사용했을 때) -> 성능이 더 좋아짐
-# # loss :  8.257928848266602
-# # mae :  2.153233766555786
-# # RMSE :  2.8736613880089967
-# # R2 :  0.9012007709162857
+# After Preprocessing(MinMaxScaler)
+# loss :  8.257928848266602
+# mae :  2.153233766555786
+# RMSE :  2.8736613880089967
+# R2 :  0.9012007709162857
+
+# Standard
+# loss :  8.971144676208496
+# mae :  2.3500192165374756
+# RMSE :  2.995186913890571
+# R2 :  0.8926677509127374
