@@ -25,6 +25,13 @@ def quantile_loss(y_true,y_pred):
     v = tf.maximum(q*e, (q-1)*e)
     return K.mean(v)
 
+def quantile_dacon(y_true,y_pred):
+    qs = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+    q = tf.constant(np.array(qs),dtype = tf.float32)
+    e = y_true - y_pred
+    v = tf.maximum(q*e, (q-1)*e)
+    return K.mean(v)
+
 # model
 model.compile(loss=quantile_loss,optimizer = 'adam')
 model.fit(x,y,epochs=EPOCHS,batch_size=batch_size)
