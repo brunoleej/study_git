@@ -39,11 +39,11 @@ model.add(Dense(5))
 model.add(Dense(5))
 model.add(Dense(3)) # output= 3 
 
-#3. Compile, Train
+# Compile, Train
 model.compile(loss='mse', optimizer='adam', metrics=['mae'])
 model.fit(x_train, y_train, epochs=100, batch_size=1, validation_split=0.6)  # 첫 번째 컬럼에서 20%, 두 번쩨 컬럼에서 20%, y 컬럼에서 20% # 이때 batch_size=1는 (1,3)을 의미함
 
-#4. Predict, Evaluate
+# Predict, Evaluate
 loss, mae = model.evaluate(x_test, y_test)
 print('loss : ', loss)
 print('mae : : ', mae)
