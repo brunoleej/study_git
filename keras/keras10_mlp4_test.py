@@ -11,7 +11,7 @@
 
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(1, 101), range(101,201), range(201, 301), range(301, 401)] ) 
 y = np.array([range(511,611), range(611,711)])  
 # print(x.shape)          #(5, 100)
@@ -38,7 +38,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, shuffl
 # print(y_train.shape)      #(80, 2)
 # print(x_test.shape)       #(20, 5)
 
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
