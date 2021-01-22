@@ -27,7 +27,7 @@ print(y_train.shape)      #(80, 3)
 print(x_test.shape)       #(20, 3)
 
 
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 # from keras.layers import Dense (tesnsorflow 설치가 필요함, 조금 느려짐)
