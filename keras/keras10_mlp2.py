@@ -8,7 +8,7 @@
 
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(301, 401), range(1, 101)] ) # 0 ~ 99 / 301 ~ 400 / 1 ~ 100 --->  (3, 100)
 y = np.array(range(711, 811))                                #710 ~ 810 ----> (100, )
 # print(x.shape)          #(3, 100)
@@ -28,7 +28,7 @@ print(y_train.shape)      #(80,)
 print(x_test.shape)       #(20, 3)
 
 
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 # from keras.layers import Dense (tesnsorflow 설치가 필요함, 조금 느려짐)
@@ -40,7 +40,7 @@ model.add(Dense(5))
 model.add(Dense(5))
 model.add(Dense(1))
 
-#3. Compile, Train
+# Compile, Train
 model.compile(loss='mse', optimizer='adam', metrics=['mae'])
 model.fit(x_train, y_train, epochs=100, batch_size=1, validation_split=0.6)  
 
