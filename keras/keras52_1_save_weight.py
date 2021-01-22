@@ -34,7 +34,7 @@ y_test = encoder.transform(y_test).toarray()    #toarray() : list 를 array로 �
 # print(y_train.shape)    # (60000, 10)
 # print(y_test.shape)     # (10000, 10)
 
-#2. Modling
+# Modling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
 

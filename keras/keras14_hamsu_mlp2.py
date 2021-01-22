@@ -23,7 +23,7 @@ print(y_train.shape)      #(80, 3)
 print(x_test.shape)       #(20, 3)
 
 
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Input
 

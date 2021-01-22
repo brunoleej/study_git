@@ -16,7 +16,7 @@ x_test = scaler.transform(x_test)
 print(np.min(data), np.max(data)) # 0.0 711.0      ----> 최댓값 1.0 , 최솟값 0.0
 print(np.max(data[0]))  # 396.9
 
-#2. Modeling
+#2 Modeling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
