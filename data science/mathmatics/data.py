@@ -17,3 +17,5 @@ print(iris.feature_names)
 #  'sepal width (cm)',
 #  'petal length (cm)',
 #  'petal width (cm)']
+
+# from sklearn.datasets import load_digits
