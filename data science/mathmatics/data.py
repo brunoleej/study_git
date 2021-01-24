@@ -19,3 +19,4 @@ print(iris.feature_names)
 #  'petal width (cm)']
 
 # from sklearn.datasets import load_digits
+# data = load_digits()
