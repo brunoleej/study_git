@@ -20,3 +20,5 @@ print(iris.feature_names)
 
 # from sklearn.datasets import load_digits
 # data = load_digits()
+
+# X = data.data
