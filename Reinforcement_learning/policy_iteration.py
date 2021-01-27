@@ -13,7 +13,7 @@ class PolicyIteration:
                             for _ in range(env.height)]
         # 마침 상태의 설정
         self.policy_table[2][2] = []
-        # 할인율
+        # 할인율    
         self.discount_factor = 0.9
 
     # 벨만 기대 방정식을 통해 다음 가치함수를 계산하는 정책 평가
