@@ -19,12 +19,11 @@ target = iris.target
 # print(iris.shape)  #(150, 4)
 # print(data.shape)  #(150, )
 
-# Preprocessing
+# Preprocessing  
 x_train, x_test, y_train, y_test = \
     train_test_split(data, target, random_state=77, shuffle=True, train_size=0.8)
 
 kfold = KFold(n_splits=5, shuffle=True) # 데이터 5등분 
-
 
 # Modeling
 models = [LinearSVC, SVC, KNeighborsClassifier, DecisionTreeClassifier, RandomForestClassifier]
