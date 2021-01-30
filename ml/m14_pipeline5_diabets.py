@@ -39,3 +39,5 @@ model.fit(x_train, y_train)
 
 results = model.score(x_test, y_test)
 print("model.score : ", results)   
+
+# model.score :  0.40214938957307533
