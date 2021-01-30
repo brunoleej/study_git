@@ -42,7 +42,7 @@ model = RandomizedSearchCV(RandomForestRegressor(), parameters, cv=kfold)
 start = datetime.datetime.now()
 model.fit(x_train, y_train)
 end = datetime.datetime.now()
-print("time : ", end - start)   # time :  0:00:11.355361
+print("time : ", end - start)   # time :  0:00:11.921026
 
 # Evaluate
 print("최적의 매개변수 : ", model.best_estimator_)
@@ -54,6 +54,6 @@ print('최종정답률', r2_score(y_test, y_pred))
 aaa = model.score(x_test, y_test)
 print('aaa ', aaa)
 
-# 최적의 매개변수 :  RandomForestRegressor(max_depth=8, n_estimators=300, n_jobs=-1)
-# 최종정답률 0.8867971595534571
-# aaa  0.8867971595534572
+# 최적의 매개변수 :  RandomForestRegressor(max_depth=10, min_samples_leaf=7)
+# 최종정답률 0.4723161864154485
+# aaa  0.4723161864154485
