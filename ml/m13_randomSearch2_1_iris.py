@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.datasets import load_wine
+from sklearn.datasets import load_iris
 from sklearn.preprocessing import MinMaxScaler, StandardScaler  
 from sklearn.model_selection import train_test_split, KFold, cross_val_score, GridSearchCV, RandomizedSearchCV
 from sklearn.metrics import accuracy_score
@@ -16,9 +16,9 @@ warnings.filterwarnings('ignore')
 import datetime
 
 # Data
-wine = load_wine()
-data = wine.data 
-target = wine.target 
+iris = load_iris()
+data = iris.data 
+target = iris.target 
 
 # print(data.shape)  # (150, 4)
 # print(target.shape)  # (150, )
@@ -46,7 +46,7 @@ model = RandomizedSearchCV(RandomForestClassifier(), parameters, cv=kfold)
 start = datetime.datetime.now()
 model.fit(x_train, y_train)
 end = datetime.datetime.now()
-print("time :", end-start)   # time : 0:00:09.924212
+print("time :", end-start)   # time : 0:00:06.772502
 
 # Evaluate
 print("최적의 매개변수 : ", model.best_estimator_)
@@ -58,6 +58,6 @@ print('최종정답률', accuracy_score(y_test, y_pred))
 aaa = model.score(x_test, y_test)
 print('aaa ', aaa)
 
-# 최적의 매개변수 :  RandomForestClassifier(n_jobs=2)
-# 최종정답률 0.9722222222222222
-# aaa  0.9722222222222222
+# 최적의 매개변수 :  RandomForestClassifier(max_depth=12, min_samples_leaf=7, min_samples_split=10)
+# 최종정답률 0.9
+# aaa  0.9

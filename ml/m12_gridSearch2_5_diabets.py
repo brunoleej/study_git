@@ -15,12 +15,12 @@ warnings.filterwarnings('ignore')
 import datetime 
 
 # Data
-dataset = load_diabetes()
-x = dataset.data 
-y = dataset.target 
+diabetes = load_diabetes()
+data = diabetes.data 
+target = diabetes.target 
 
 # preprocessing 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=44)
+x_train, x_test, y_train, y_test = train_test_split(data, target, test_size=0.3, random_state=44)
 
 kfold = KFold(n_splits=5, shuffle=True) # 데이터를 5등분
 parameters=[
@@ -41,7 +41,8 @@ model = GridSearchCV(RandomForestRegressor(), parameters, cv=kfold)
 start = datetime.datetime.now()
 model.fit(x_train, y_train)
 end = datetime.datetime.now()
-print("time : ", end - start)   # 
+print("time : ", end - start)   # time :  0:02:01.744670
+
 
 # Evaluate
 print("최적의 매개변수 : ", model.best_estimator_)
@@ -52,3 +53,7 @@ print('최종정답률', r2_score(y_test, y_pred))
 
 aaa = model.score(x_test, y_test)
 print('aaa ', aaa)
+
+# 최적의 매개변수 :  RandomForestRegressor(max_depth=8, min_samples_leaf=9)
+# 최종정답률 0.45950546637602463
+# aaa  0.45950546637602463
