@@ -1,44 +1,39 @@
 # feature_importances
-# 중요도가 낮은 컬럼 제거한 후 실행 >> 제거하기 전이랑 결과 유사하다
-
+# 중요도 낮은 컬럼 제거 후 실행 >> 없애기 전이랑 비슷함
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
-import numpy as np
 import pandas as pd
+import numpy as np 
 
-#1. DATA
-dataset = load_breast_cancer()
-x = dataset.data 
-y = dataset.target
+# Data
+cancer = load_breast_cancer()
+data = cancer.data 
+target = cancer.target
 
-x_pd = pd.DataFrame(x, columns=dataset['feature_names']) 
-x1 = x_pd.iloc[:,21:25]
-x2 = x_pd.iloc[:,27]
-x = pd.concat([x1, x2], axis=1)
-x = x.to_numpy()
+data_df = pd.DataFrame(data, columns=cancer['feature_names']) 
+data = data_df.iloc[:,2:]
+data = data.to_numpy()
 
-# print(x.shape)
-# print(y.shape)
-
+cancer = load_breast_cancer()
 x_train, x_test, y_train, y_test = \
-    train_test_split(x, y, train_size=0.8, random_state=44)
+    train_test_split(data, target, test_size = 0.3, random_state=44)
 
-#2. modeling
+# Modeling
 model = DecisionTreeClassifier(max_depth=4)
 
-#3. Train
+# Fitting
 model.fit(x_train, y_train)
 
-#4. Score, Predict
+# Evaluate
 acc = model.score(x_test, y_test)
 
-print("feature importances : \n", model.feature_importances_)  
-print("acc : ", acc) 
+print(model.feature_importances_)  
+print("acc : ", acc)  
 
 '''
-# Graph : 컬럼 중 어떤 것이 가장 중요한 것인지 보여준다.
-# 중요도가 낮은 컬럼은 제거해도 된다. >> 그만큼 자원이 절약된다.
+# Graph : 컬럼 중 어떤 것이 가장 중요한 것인지 보여줌
+# 중요도가 낮은 컬럼은 제거해도 됨 -> 자원이 절약됨
 import matplotlib.pyplot as plt
 import numpy as np 
 
@@ -49,21 +44,14 @@ def plot_feature_importances_dataset(model) :
     plt.yticks(np.arange(n_features), dataset.feature_names)
     plt.xlabel("Feature Importances")
     plt.ylabel("Features")
-    plt.ylim(-1, n_features)    # 축의 한계를 설정한다.
+    plt.ylim(-1, n_features)    
 
 plot_feature_importances_dataset(model)
 plt.show()
 '''
-
-# feature importances : 
 # [0.         0.         0.         0.         0.         0.
 #  0.         0.         0.         0.         0.         0.
 #  0.         0.         0.         0.         0.         0.
-#  0.         0.         0.         0.05612587 0.78678449 0.01008994
-#  0.02293065 0.         0.         0.12406904 0.         0.        ]
-# acc :  0.9385964912280702
-
-# 중요도 0인 컬럼 삭제한 후 >> 삭제하거나 그대로나 acc 유사하다
-# feature importances :
-#  [0.05612587 0.78000877 0.01686566 0.00995429 0.1370454 ]
-# acc :  0.9385964912280702
+#  0.         0.04506037 0.72022279 0.03726585 0.02648971 0.
+#  0.         0.16323461 0.         0.00772666]
+# acc :  0.9122807017543859

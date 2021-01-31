@@ -33,7 +33,7 @@ print("acc : ", acc)
 
 '''
 # Graph : 컬럼 중 어떤 것이 가장 중요한 것인지 보여줌
-# 중요도가 낮은 컬럼은 제거해도 됨 -> 그만큼 자원이 절약됨
+# 중요도가 낮은 컬럼은 제거해도 됨 -> 자원이 절약됨
 import matplotlib.pyplot as plt
 import numpy as np 
 
