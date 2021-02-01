@@ -1,5 +1,5 @@
 # feature_importances
-# 중요도가 낮은 컬럼 제거한 후 실행 >> 제거하기 전이랑 결과 유사하다
+# 중요도 낮은 컬럼 제거 후 실행 >> 없애기 전이랑 비슷함
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.datasets import load_boston
