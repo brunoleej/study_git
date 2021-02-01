@@ -20,13 +20,13 @@ data = data.to_numpy()
 x_train, x_test, y_train, y_test = \
     train_test_split(data, target, test_size = 0.3, random_state=44)
 
-#2. modeling
+# Modeling
 model = DecisionTreeRegressor(max_depth=4)
 
-#3. Train
+# Fitting
 model.fit(x_train, y_train)
 
-#4. Score, Predict
+# Evaluate
 acc = model.score(x_test, y_test)
 
 print("feature_importances : \n", model.feature_importances_)  
