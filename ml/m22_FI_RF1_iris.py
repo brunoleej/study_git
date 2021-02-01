@@ -59,7 +59,7 @@ def plot_feature_importances_dataset(model) :
     plt.yticks(np.arange(n_features), dataset.feature_names)
     plt.xlabel("Feature Importances")
     plt.ylabel("Features")
-    plt.ylim(-1, n_features)    # 축의 한계를 설정한다.
+    plt.ylim(-1, n_features)    
 
 plot_feature_importances_dataset(model)
 plt.show()
