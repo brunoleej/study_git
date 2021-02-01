@@ -1,11 +1,12 @@
 # feature_importances
 # 중요도 낮은 컬럼 제거 후 실행 >> 없애기 전이랑 비슷함
+import pandas as pd
+import numpy as np 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-import pandas as pd
-import numpy as np 
+
 
 # Data
 iris = load_iris()
