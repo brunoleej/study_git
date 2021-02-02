@@ -1,12 +1,12 @@
-# xgboosting (pip install xgboost)
-# n_jobs 시간 확인 
+# xgboosting
+# plot_importance
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
-from xgboost import XGBClassifier
+from xgboost import XGBClassifier, plot_importance
 import datetime
 
 # Data
@@ -14,9 +14,10 @@ cancer = load_breast_cancer()
 data = cancer.data 
 target = cancer.target
 
-data_df = pd.DataFrame(data, columns=cancer['feature_names']) 
-data = data_df.drop(['worst compactness', 'mean symmetry', 'concave points error', 'mean perimeter', 'symmetry error', 'mean compactness', 'worst symmetry', 'mean fractal dimension'], axis=1)
-data = data.to_numpy()
+# data_df = pd.DataFrame(data, columns=cancer['feature_names']) 
+# data = data_df.drop(['worst compactness', 'mean symmetry', 'concave points error', 'mean perimeter', 'symmetry error', 'mean compactness', 'worst symmetry', 'mean fractal dimension'], axis=1)
+# data = data.to_numpy()
+
 # print(data.shape)
 # print(target.shape)
 
@@ -29,13 +30,13 @@ start = datetime.datetime.now()
 # model = DecisionTreeClassifier(max_depth=4)
 # model = RandomForestClassifier()
 # model = GradientBoostingClassifier()
-model = XGBClassifier(n_jobs = -1, use_label_encoder=False)      # n_jobs = -1 : CPU 자원을 모두 사용하겠다.
+model = XGBClassifier(n_jobs = -1)      # n_jobs = -1 : CPU 모두 사용
 # model = XGBClassifier(n_jobs = 1)      
 
 # Fitting
-model.fit(x_train, y_train, eval_metric='logloss')
+model.fit(x_train, y_train)
 
-# Evaluate
+# Evalute
 acc = model.score(x_test, y_test)
 
 print("feature importances : \n", model.feature_importances_)  
@@ -65,12 +66,11 @@ def cut_columns(feature_importances, columns, number):
 
 # print(cut_columns(model.feature_importances_, dataset.feature_names, 8))
 # ['worst compactness', 'mean symmetry', 'concave points error', 'mean perimeter', 'symmetry error', 'mean compactness', 'worst symmetry', 'mean fractal dimension']
-'''
+
 # Graph : 컬럼 중 어떤 것이 가장 중요한 것인지 보여줌
 # 중요도가 낮은 컬럼은 제거해도 됨 -> 자원이 절약됨
 import matplotlib.pyplot as plt
-import numpy as np 
-
+'''
 def plot_feature_importances_dataset(model) :
     n_features = dataset.data.shape[1]
     plt.barh(np.arange(n_features), model.feature_importances_,
@@ -84,10 +84,13 @@ plot_feature_importances_dataset(model)
 plt.show()
 '''
 
+plot_importance(model)
+plt.show()
+
 # feature importances : 
-#  [0.01097116 0.03097648 0.         0.00770928 0.00120163 0.31298706
-#  0.00903356 0.00469326 0.00347319 0.00558912 0.0029177  0.00479884
-#  0.00210891 0.0021735  0.07852165 0.02522861 0.362546   0.0162369
-#  0.00820302 0.01046769 0.09083616 0.00932618]
-# acc :  0.9649122807017544
-# time :  0:00:00.053310
+#  [0.00675269 0.02949877 0.00258634 0.         0.00892249 0.00212474
+#  0.00163637 0.26203424 0.         0.00417205 0.0105376  0.00149657
+#  0.00254774 0.00436214 0.00363592 0.00396876 0.0006987  0.00287212
+#  0.00237055 0.00193919 0.07018456 0.02327763 0.3904875  0.01487531
+#  0.00913892 0.00579641 0.01074649 0.10935875 0.00395197 0.01002543]
+# acc :  0.9707602339181286
