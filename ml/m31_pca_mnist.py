@@ -1,5 +1,4 @@
-# 실습
-# pca를 통해 0.95 인 것은 몇 개인지
+# pca를 통해 0.95 인 것은 몇 개?
 # pca 배운 거 넣어서 코드 완성
 import numpy as np
 from tensorflow.keras.datasets import mnist

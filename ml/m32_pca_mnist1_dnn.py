@@ -1,4 +1,3 @@
-# 실습
 # pca를 통해 0.95 인 것은 몇 개?
 # m31로 만든 0.95 이상의 n_componet를 사용하여 dnn 모델 생성
 # cnn과 비교한다.
@@ -64,11 +63,13 @@ model.add(Dense(16, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 model.summary()
 
-# Fitting
 from tensorflow.keras.callbacks import EarlyStopping
 es = EarlyStopping(monitor='acc', patience=5, mode='max')
 
+# Compile
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['acc'])
+
+# Fitting
 model.fit(x_train, y_train, epochs=120, batch_size=32, validation_split=0.2, callbacks=[es])
 
 # Evaluate
@@ -76,6 +77,7 @@ loss, acc = model.evaluate(x_test, y_test, batch_size=32)
 print("loss : ",loss)
 print("acc : ",acc)
 
+# Prediction
 print("y_test[:10] :",np.argmax(y_test[:10],axis=1))
 
 y_predict = model.predict(x_test[:10])
