@@ -1,26 +1,23 @@
-# PCA : 차원축소, 컬럼 재구성
-# cumsum : 배열에서 주어진 축에 따라 누적되는 원소들의 누적 합을 계산하는 함수.
-
+# PCA : 차원축소
+# cumsum : 누적 합 계산 함수
 import numpy as np
 from sklearn.datasets import load_wine
 from sklearn.decomposition import PCA
 
-
-datasets = load_wine()
-x = datasets.data
-y = datasets.target
-print(x.shape, y.shape) # (178, 13) (178,)
+wine = load_wine()
+data = wine.data
+target = wine.target
+print(data.shape, target.shape) # (178, 13) (178,)
 
 # pca = PCA(n_components=9)
-# x2 = pca.fit_transform(x)  # fit_transform : 전처리 fit과 transform 한꺼번에 한다.
+# data2 = pca.fit_transform(data)  
 
-# print(x2)
-# print(x2.shape)            # (442, 7) >> 컬럼을 압축시켰다. 컬럼 재구성됨
+# print(data2)
+# print(data2.shape)            # (442, 7) 
 
 # pca_EVR = pca.explained_variance_ratio_ # 컬럼이 어느 정도의 변화율을 보여주었는지 보여준다.
 # print(pca_EVR)
 # print(sum(pca_EVR)) 
-
 
 pca = PCA()
 pca.fit(x)
