@@ -1,0 +1,239 @@
+# 실습
+# pca를 통해 0.95 인 것은 몇 개인가?
+# pca 배운 거 넣어서 코드 완성
+
+import numpy as np
+from tensorflow.keras.datasets import mnist
+from sklearn.decomposition import PCA
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+
+#1. DATA
+(x_train, _), (x_test, _) = mnist.load_data()
+        # y_train과 y_test 를 사용하지 않겠다.
+
+x = np.append(x_train, x_test, axis=0)
+x =x.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔준다.
+print(x.shape)  # (70000, 784)
+
+pca = PCA() 
+pca.fit(x)
+cumsum = np.cumsum(pca.explained_variance_ratio_)
+print("cumsum : ", cumsum)
+'''
+cumsum :  [0.09746116 0.16901561 0.23051091 0.28454476 0.3334341  0.37648637
+ 0.40926898 0.4381654  0.46574904 0.48917044 0.51023733 0.53061286
+ 0.5476835  0.5646237  0.58045752 0.59532097 0.60851456 0.6213047
+ 0.63317742 0.64470679 0.65536719 0.66546513 0.67505665 0.684153
+ 0.69298586 0.70137405 0.70947236 0.71732954 0.72473217 0.73163231
+ 0.73819375 0.74464845 0.75065664 0.75651276 0.7621803  0.767615
+ 0.77266217 0.77753297 0.78232252 0.78699846 0.79154214 0.79599132
+ 0.80017349 0.80413513 0.8079722  0.81173005 0.81534432 0.81883456
+ 0.82222188 0.82541884 0.82858738 0.83168883 0.83465363 0.83752465
+ 0.84034978 0.84304401 0.84572793 0.84829303 0.85082471 0.85327119
+ 0.85566821 0.85805402 0.86034636 0.86255585 0.86468645 0.86674963
+ 0.86877744 0.87072779 0.8726425  0.87452799 0.87639775 0.8781988
+ 0.87996667 0.88170025 0.88334875 0.88498112 0.8865952  0.88813824
+ 0.88960844 0.89103044 0.8924406  0.89384206 0.89523811 0.89658836
+ 0.89791207 0.899231   0.90052297 0.90177469 0.90299999 0.90420418
+ 0.90536781 0.906511   0.90763647 0.90873509 0.90981852 0.91089027
+ 0.91192719 0.91296138 0.91396728 0.91496661 0.91594334 0.91688496
+ 0.91782079 0.91873245 0.91963319 0.92052269 0.92138427 0.92223682
+ 0.92307782 0.92389505 0.92468107 0.92545857 0.92623439 0.92699917
+ 0.92775974 0.92850853 0.92923877 0.92996413 0.93067997 0.93138338
+ 0.93207512 0.93276204 0.93344142 0.93411316 0.93477443 0.93541711
+ 0.93604988 0.93667828 0.93729791 0.93789931 0.93849958 0.93909337
+ 0.93967965 0.9402631  0.940842   0.94141475 0.94197813 0.94253042
+ 0.943066   0.94359172 0.94411446 0.94462437 0.94512666 0.9456248
+ 0.94612065 0.946613   0.94709678 0.94757768 0.94804925 0.94851596
+ 0.94898019 0.94944218 0.94990047 0.95034997 0.95079714 0.95123805
+ 0.95167605 0.95210242 0.95252328 0.95294145 0.95335445 0.95376287
+ 0.95416113 0.95455512 0.95494687 0.95533599 0.95571939 0.95609788
+ 0.95647432 0.95684638 0.95721271 0.95757751 0.95793954 0.95829637
+ 0.95865012 0.95900242 0.95934903 0.95969382 0.96003568 0.96037455
+ 0.9607095  0.96103861 0.96136648 0.96169065 0.96201344 0.9623336
+ 0.96265022 0.96296557 0.96327544 0.96358481 0.96389067 0.96419322
+ 0.96449444 0.96479476 0.96509028 0.9653854  0.96567824 0.96596999
+ 0.96625661 0.96653954 0.9668211  0.96709847 0.96737282 0.96764487
+ 0.96791337 0.96818032 0.96844491 0.96870854 0.96897011 0.96922878
+ 0.96948623 0.96974278 0.96999724 0.97024999 0.97050172 0.97075021
+ 0.97099709 0.97124223 0.97148479 0.97172585 0.97196658 0.97220574
+ 0.97244411 0.97268057 0.97291231 0.97314346 0.97337294 0.97360044
+ 0.9738275  0.97405068 0.97427157 0.97449133 0.9747087  0.97492482
+ 0.97513932 0.97535229 0.97556485 0.97577473 0.9759841  0.97619041
+ 0.97639504 0.97659779 0.9767991  0.97699991 0.97719834 0.97739582
+ 0.97759133 0.97778421 0.97797684 0.9781686  0.97835942 0.9785481
+ 0.97873539 0.9789226  0.97910818 0.97929318 0.97947707 0.97965934
+ 0.97984133 0.9800213  0.98019827 0.98037474 0.98055032 0.9807241
+ 0.98089718 0.9810694  0.98124063 0.98141076 0.9815795  0.98174654
+ 0.98191313 0.98207944 0.98224342 0.98240691 0.98256983 0.98273155
+ 0.98289154 0.98305114 0.98320998 0.98336736 0.98352336 0.98367788
+ 0.98383147 0.98398451 0.98413622 0.98428614 0.98443561 0.98458358
+ 0.98473136 0.98487746 0.98502198 0.9851652  0.98530797 0.98545006
+ 0.98559153 0.98573178 0.98586954 0.98600685 0.98614311 0.98627883
+ 0.98641389 0.98654826 0.9866818  0.98681423 0.98694508 0.98707455
+ 0.98720327 0.98733096 0.9874583  0.98758506 0.98771121 0.98783717
+ 0.98796179 0.988085   0.98820693 0.98832839 0.98844898 0.98856873
+ 0.98868781 0.98880663 0.98892392 0.98904079 0.98915683 0.98927271
+ 0.98938754 0.98950182 0.98961399 0.98972509 0.98983526 0.98994529
+ 0.99005503 0.99016416 0.9902724  0.99037985 0.99048639 0.99059265
+ 0.99069885 0.99080369 0.99090686 0.9910095  0.99111119 0.99121161
+ 0.99131175 0.99141112 0.99151036 0.99160868 0.99170619 0.99180308
+ 0.99189801 0.99199211 0.99208598 0.99217929 0.99227162 0.99236323
+ 0.99245439 0.99254478 0.99263456 0.99272373 0.99281259 0.99290056
+ 0.99298752 0.99307382 0.99315945 0.99324427 0.99332894 0.99341255
+ 0.9934952  0.99357759 0.99365961 0.99374051 0.99382135 0.99390072
+ 0.99397991 0.99405814 0.99413601 0.99421317 0.99428941 0.99436531
+ 0.99443978 0.99451366 0.99458698 0.99465999 0.99473239 0.99480435
+ 0.99487561 0.99494588 0.99501547 0.99508477 0.99515276 0.99522017
+ 0.99528704 0.99535295 0.99541771 0.9954817  0.99554505 0.99560818
+ 0.99566995 0.99573098 0.99579104 0.99585078 0.9959097  0.99596825
+ 0.99602628 0.99608361 0.99614003 0.996196   0.9962514  0.99630588
+ 0.99636024 0.99641449 0.99646742 0.9965202  0.99657247 0.9966241
+ 0.99667525 0.9967259  0.99677565 0.99682503 0.99687401 0.99692228
+ 0.99696977 0.9970167  0.99706304 0.9971093  0.99715454 0.99719914
+ 0.99724256 0.99728497 0.99732703 0.99736898 0.9974102  0.99745141
+ 0.99749225 0.99753274 0.99757293 0.99761143 0.99764964 0.99768763
+ 0.99772533 0.99776254 0.99779943 0.99783586 0.99787114 0.99790623
+ 0.99794118 0.99797567 0.99801002 0.99804427 0.99807724 0.99810988
+ 0.99814192 0.9981737  0.99820509 0.9982359  0.99826576 0.99829545
+ 0.99832467 0.99835366 0.99838258 0.9984109  0.9984386  0.99846609
+ 0.99849326 0.99852001 0.99854566 0.99857088 0.99859584 0.99862051
+ 0.99864497 0.99866931 0.99869345 0.99871743 0.99874088 0.99876424
+ 0.99878734 0.99880978 0.99883194 0.99885349 0.99887488 0.9988961
+ 0.99891695 0.99893763 0.99895791 0.99897781 0.99899756 0.99901705
+ 0.99903634 0.99905537 0.99907416 0.99909254 0.99911058 0.99912854
+ 0.99914581 0.99916293 0.99917913 0.99919524 0.99921106 0.99922682
+ 0.99924222 0.99925759 0.99927283 0.99928769 0.99930236 0.99931678
+ 0.99933093 0.99934485 0.99935849 0.99937201 0.99938544 0.99939873
+ 0.9994116  0.99942416 0.99943642 0.99944866 0.99946081 0.99947275
+ 0.99948434 0.99949583 0.99950726 0.99951858 0.99952979 0.99954077
+ 0.99955159 0.99956213 0.99957255 0.99958282 0.99959284 0.99960219
+ 0.99961139 0.99962054 0.99962964 0.99963858 0.99964724 0.99965569
+ 0.99966375 0.99967161 0.99967944 0.99968722 0.99969499 0.9997026
+ 0.99971012 0.99971754 0.99972483 0.99973202 0.99973916 0.99974617
+ 0.99975292 0.99975965 0.99976598 0.99977223 0.9997784  0.99978423
+ 0.99978989 0.9997954  0.99980089 0.99980626 0.99981158 0.99981678
+ 0.99982168 0.99982653 0.99983136 0.99983615 0.9998407  0.9998452
+ 0.99984966 0.99985411 0.99985848 0.99986262 0.99986673 0.99987068
+ 0.99987456 0.9998784  0.99988221 0.9998856  0.99988892 0.99989212
+ 0.99989529 0.99989844 0.99990155 0.99990463 0.99990768 0.99991064
+ 0.99991354 0.99991643 0.99991918 0.9999217  0.9999242  0.99992658
+ 0.99992889 0.99993105 0.9999332  0.99993531 0.99993741 0.99993944
+ 0.99994146 0.99994343 0.99994535 0.99994717 0.99994896 0.9999507
+ 0.99995244 0.99995412 0.99995576 0.99995737 0.99995897 0.99996052
+ 0.99996202 0.99996332 0.99996462 0.99996591 0.99996718 0.99996839
+ 0.99996954 0.99997063 0.99997171 0.99997279 0.99997385 0.99997489
+ 0.99997591 0.9999769  0.99997784 0.99997876 0.9999796  0.99998044
+ 0.99998126 0.99998207 0.99998287 0.9999836  0.9999843  0.99998496
+ 0.99998561 0.99998623 0.99998684 0.99998745 0.99998805 0.99998862
+ 0.99998917 0.99998972 0.99999024 0.99999075 0.99999123 0.99999168
+ 0.99999213 0.99999254 0.99999293 0.99999331 0.99999368 0.99999405
+ 0.99999439 0.99999468 0.99999496 0.99999524 0.99999551 0.99999578
+ 0.99999604 0.9999963  0.99999654 0.99999675 0.99999696 0.99999715
+ 0.99999733 0.99999751 0.99999769 0.99999785 0.999998   0.99999815
+ 0.99999828 0.99999841 0.99999852 0.99999864 0.99999876 0.99999887
+ 0.99999898 0.99999907 0.99999916 0.99999924 0.99999931 0.99999939
+ 0.99999945 0.99999951 0.99999956 0.99999961 0.99999965 0.99999969
+ 0.99999972 0.99999976 0.99999978 0.99999981 0.99999984 0.99999986
+ 0.99999988 0.99999989 0.9999999  0.99999992 0.99999993 0.99999994
+ 0.99999995 0.99999996 0.99999996 0.99999997 0.99999998 0.99999998
+ 0.99999998 0.99999999 0.99999999 1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.         1.         1.
+ 1.         1.         1.         1.        ]
+'''
+
+
+d = np.argmax(cumsum >= 0.95)+1
+print("cumsum >= 0.95", cumsum > 0.95)
+'''
+cumsum >= 0.95 [False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False False False False
+ False False False False False False False False False  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True  True  True  True  True  True  True  True  True
+  True  True  True  True]
+'''
+print("d : ", d)    # d :  154
+
+# import matplotlib.pyplot as plt
+# plt.plot(cumsum)
+# plt.grid()
+# plt.show()
+
+pca = PCA(n_components=154)
+x2 = pca.fit_transform(x)
+
+print(x2.shape)     # (70000, 154)
