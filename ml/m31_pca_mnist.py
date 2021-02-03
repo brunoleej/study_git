@@ -1,7 +1,6 @@
 # 실습
-# pca를 통해 0.95 인 것은 몇 개인가?
+# pca를 통해 0.95 인 것은 몇 개인지
 # pca 배운 거 넣어서 코드 완성
-
 import numpy as np
 from tensorflow.keras.datasets import mnist
 from sklearn.decomposition import PCA
@@ -9,16 +8,15 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 
-#1. DATA
-(x_train, _), (x_test, _) = mnist.load_data()
-        # y_train과 y_test 를 사용하지 않겠다.
+# Data
+(x_train, _), (x_test, _) = mnist.load_data()   # y_train과 y_test 를 사용안함
 
-x = np.append(x_train, x_test, axis=0)
-x =x.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔준다.
-print(x.shape)  # (70000, 784)
+data = np.append(x_train, x_test, axis=0)
+data = data.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔줌
+print(data.shape)  # (70000, 784)
 
 pca = PCA() 
-pca.fit(x)
+pca.fit(data)
 cumsum = np.cumsum(pca.explained_variance_ratio_)
 print("cumsum : ", cumsum)
 '''
@@ -234,6 +232,6 @@ print("d : ", d)    # d :  154
 # plt.show()
 
 pca = PCA(n_components=154)
-x2 = pca.fit_transform(x)
+data2 = pca.fit_transform(data)
 
-print(x2.shape)     # (70000, 154)
+print(data2.shape)     # (70000, 154)

@@ -1,9 +1,7 @@
 # 실습
-# pca를 통해 0.95 인 것은 몇 개인가?
-# pca 배운 거 넣어서 코드 완성
-# m31로 만든 0.95 이상의 n_componet를 사용하여 dnn 모델을 만들 것 (mnist dnn 보다 성능 좋을 것)
+# pca를 통해 0.95 인 것은 몇 개?
+# m31로 만든 0.95 이상의 n_componet를 사용하여 dnn 모델 생성
 # cnn과 비교한다.
-
 import numpy as np
 from tensorflow.keras.datasets import mnist
 from sklearn.decomposition import PCA
@@ -11,18 +9,18 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 
-#1. DATA
+# Data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-x = np.append(x_train, x_test, axis=0)
-x =x.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔준다.
-print(x.shape)  # (70000, 784)
+data = np.append(x_train, x_test, axis=0)
+data = data.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔줌
+print(data.shape)  # (70000, 784)
 
-y = np.append(y_train, y_test, axis=0)
-print(y.shape)  # (70000,)
+target = np.append(y_train, y_test, axis=0)
+print(target.shape)  # (70000,)
 
 # pca = PCA() 
-# pca.fit(x)
+# pca.fit(data)
 # cumsum = np.cumsum(pca.explained_variance_ratio_)
 # print("cumsum : ", cumsum)
 
@@ -36,11 +34,11 @@ print(y.shape)  # (70000,)
 # plt.show()
 
 pca = PCA(n_components=154)
-x2 = pca.fit_transform(x)
+data2 = pca.fit_transform(data)
 
-print(x2.shape)     # (70000, 154)
+print(data2.shape)     # (70000, 154)
 
-x_train, x_test, y_train, y_test = train_test_split(x2, y, train_size=0.8, shuffle=True, random_state=47)
+x_train, x_test, y_train, y_test = train_test_split(data2, target, test_size = 0.3, shuffle=True, random_state=47)
 print(x_train.shape)    # (56000, 154)
 print(x_test.shape)     # (14000, 154)
 
@@ -50,7 +48,7 @@ y_test = to_categorical(y_test)
 print(y_train.shape)    # (56000, 10)
 print(y_test.shape)     # (14000, 10)
 
-#2. Modling
+# Modeling
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 
@@ -66,14 +64,14 @@ model.add(Dense(16, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 model.summary()
 
-# Compile, Train
+# Fitting
 from tensorflow.keras.callbacks import EarlyStopping
 es = EarlyStopping(monitor='acc', patience=5, mode='max')
 
 model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['acc'])
 model.fit(x_train, y_train, epochs=120, batch_size=32, validation_split=0.2, callbacks=[es])
 
-# Evaluate, Predict
+# Evaluate
 loss, acc = model.evaluate(x_test, y_test, batch_size=32)
 print("loss : ",loss)
 print("acc : ",acc)
