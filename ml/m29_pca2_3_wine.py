@@ -15,12 +15,12 @@ print(data.shape, target.shape) # (178, 13) (178,)
 # print(data2)
 # print(data2.shape)            # (442, 7) 
 
-# pca_EVR = pca.explained_variance_ratio_ # 컬럼이 어느 정도의 변화율을 보여주었는지 보여준다.
+# pca_EVR = pca.explained_variance_ratio_   # 컬럼의 변화율을 보여줌
 # print(pca_EVR)
 # print(sum(pca_EVR)) 
 
 pca = PCA()
-pca.fit(x)
+pca.fit(data)
 cumsum = np.cumsum(pca.explained_variance_ratio_)   
 print("cumsum : ", cumsum)  # cumsum 누적 합을 계산
 # cumsum :  [0.99809123 0.99982715 0.99992211 0.99997232 0.99998469 0.99999315
