@@ -37,7 +37,7 @@ pca = PCA(n_components=713)
 data2 = pca.fit_transform(data)
 print(data2.shape)     # (70000, 713)
 
-x_train, x_test, y_train, y_test = train_test_split(data2, target, train_size=0.8, shuffle=True, random_state=47)
+x_train, x_test, y_train, y_test = train_test_split(data2, target, test_size=0.3, shuffle=True, random_state=47)
 print(x_train.shape)    # (56000, 713)
 print(x_test.shape)     # (14000, 713)
 kf = KFold(n_splits=5, shuffle=True, random_state=47)
