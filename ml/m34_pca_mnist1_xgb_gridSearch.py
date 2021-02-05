@@ -1,7 +1,6 @@
-# m31로 만든 0.95 이상의 n_componet를 사용하여 xgboost 모델을 만들 것 (mnist dnn 보다 성능 좋을 것)
-# cnn과 비교한다.
+# m31로 만든 0.95 이상의 n_componet를 사용하여 xgboost 모델 생성
+# cnn과 비교
 # girdSearch & RandomSearchCV 
-
 import numpy as np
 from tensorflow.keras.datasets import mnist
 from sklearn.decomposition import PCA
@@ -11,18 +10,18 @@ from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 
-#1. DATA
+# Data
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-x = np.append(x_train, x_test, axis=0)
-x =x.reshape(70000, 28*28)  # 3차원은 PCA에 들어가지 않으므로 2차원으로 바꿔준다.
-print(x.shape)  # (70000, 784)
+data = np.append(x_train, x_test, axis=0)
+data = data.reshape(70000, 28*28)  # 3차원은 PCA 안됨  -> 2차원으로 바꿔줌
+print(data.shape)  # (70000, 784)
 
-y = np.append(y_train, y_test, axis=0)
-print(y.shape)  # (70000,)
+target = np.append(y_train, y_test, axis=0)
+print(target.shape)  # (70000,)
 
 # pca = PCA() 
-# pca.fit(x)
+# pca.fit(data)
 # cumsum = np.cumsum(pca.explained_variance_ratio_)
 # print("cumsum : ", cumsum)
 
@@ -36,11 +35,11 @@ print(y.shape)  # (70000,)
 # plt.show()
 
 pca = PCA(n_components=154)
-x2 = pca.fit_transform(x)
+data2 = pca.fit_transform(data)
 
-print(x2.shape)     # (70000, 154)
+print(data2.shape)     # (70000, 154)
 
-x_train, x_test, y_train, y_test = train_test_split(x2, y, train_size=0.8, shuffle=True, random_state=47)
+x_train, x_test, y_train, y_test = train_test_split(data2, target, test_size=0.3, shuffle=True, random_state=47)
 print(x_train.shape)    # (56000, 154)
 print(x_test.shape)     # (14000, 154)
 print(y_train.shape, y_test.shape)  # (56000,) (14000,)
@@ -52,33 +51,33 @@ kf = KFold(n_splits=5, shuffle=True, random_state=47)
 # print(y_train.shape)    # (56000, 10)
 # print(y_test.shape)     # (14000, 10)
 
-#2. Modling
+# Modeling
 parameters = [
     {"n_estimators":[90, 100], "learning_rate":[0.3, 0.001]},
     {"n_estimators":[90, 100], "learning_rate":[0.01, 0.001], "max_depth":[4, 5, 6]},
     {"colsample_bytree":[0.6, 0.9], "colsample_bylevel" :[0.6, 0.7, 0.9]}
 ]
 model = GridSearchCV(XGBClassifier(n_jobs = 8, use_label_encoder=False, n_estimators=100), parameters, cv=kf)
-                                    # n_estimators : epoch과 같은 개념, 몇 번 돌아가는 가
+                                    # n_estimators : epoch과 같은 개념, 몇 번 도는지 결정하는 파라미터
 
-#3 Train
+# Fitting
 model.fit(x_train, y_train, eval_metric='mlogloss', verbose=True,
     eval_set=[(x_train, y_train), (x_test, y_test)]
     )
-# eval_metrics : loss와 evaluate 합쳐져 있음
+# eval_metrics : loss와 evaluate 합친 것
 # eval_set : evaluate
 
-#4 Evaluate, Predict
 print("최적의 매개변수 : ", model.best_estimator_)
 
+# Prediction
 y_pred = model.predict(x_test) 
 
+# Evaluate
 result = model.score(x_test, y_test)
 print("result : ", result)
 
 score = accuracy_score(y_pred, y_test)
 print("accuracy_score : ", score)
-
 
 # CNN
 # loss :  0.034563612192869186
