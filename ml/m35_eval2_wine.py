@@ -1,4 +1,4 @@
-# eval_set : validation0, 1을 볼 수 있음
+# eval_set : validation0, 1 확인가능
 # eval_metric : 메트릭스를 지정
 # evals_result : eval_metric 에 지정했던 rmse가 줄어드는 것을 확인 가능
 from xgboost import XGBClassifier, XGBRegressor
