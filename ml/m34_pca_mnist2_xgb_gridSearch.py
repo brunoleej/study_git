@@ -1,4 +1,4 @@
-# m31로 만든 1.0 이상의 n_componet를 사용하여 xgboost 모델생성
+# m31로 만든 1.0 이상의 n_componet 이용해 xgboost 모델생성
 # girdSearch & RandomSearchCV
 import numpy as np
 from tensorflow.keras.datasets import mnist
