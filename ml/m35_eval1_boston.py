@@ -1,6 +1,6 @@
-# eval_set : validation0, 1을 볼 수 있음
+# eval_set : validation0, 1 확인가능
 # eval_metric : 메트릭스를 지정
-# evals_result : eval_metric 에 지정했던 rmse가 줄어드는 걸 볼 수 있음
+# evals_result : eval_metric 에 지정했던 rmse가 줄어드는 것 확인가능
 from xgboost import XGBClassifier, XGBRegressor
 from sklearn.datasets import load_boston, load_breast_cancer
 from sklearn.model_selection import train_test_split
