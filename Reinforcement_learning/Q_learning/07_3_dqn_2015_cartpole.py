@@ -13,7 +13,7 @@ env = gym.make('CartPole-v0')
 input_size = env.observation_space.shape[0]
 output_size = env.action_space.n
 
-dis = 0.9
+dis = 0.9   # Discount Factor
 REPLAY_MEMORY = 50000
 
 def replay_train(mainDQN, targetDQN, train_batch):
