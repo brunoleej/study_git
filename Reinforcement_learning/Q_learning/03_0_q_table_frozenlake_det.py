@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from gym.envs.registration import register
 import random as pr
 
-def rargmax(vector):    # https://gist.github.com/stober/1943451
+def rargmax(vector): # 같은 Q값이 있다고 가정하였을 때 어떤 위치로 가야 할지 모르기 때문에 Random한 값으로 지정했습니다.
     """ Argmax that chooses randomly among eligible maximum idices. """
     m = np.amax(vector)
     indices = np.nonzero(vector == m)[0]
