@@ -10,7 +10,7 @@ register(
     kwargs={'map_name' : '4x4', 'is_slippery': False}
 )
 
-#env = gym.make('FrozenLake-v3')
+# env = gym.make('FrozenLake-v3')
 env = gym.make('FrozenLake-v0')
 
 # Initialize table with all zeros
