@@ -1,5 +1,5 @@
-# cifar10를 flow사용해 구성해서 완성
-# male, female >> Imagegenerator, fit_generator 적용해서 완성
+# cifar10를 flow사용
+# male, female : Imagegenerator, fit_generator
 from tensorflow.keras.datasets import cifar10
 import numpy as np
 from tensorflow.keras.models import Sequential
