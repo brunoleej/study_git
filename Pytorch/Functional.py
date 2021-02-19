@@ -22,3 +22,4 @@ F.conv3d(inputs, filters)
 
 # conv_transpose1d
 
+# conv_transpose2d
