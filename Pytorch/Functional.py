@@ -19,3 +19,6 @@ F.conv2d(inputs, filters, padding=1)
 filters = torch.randn(33, 16, 3, 3, 3)
 inputs = torch.randn(20, 16, 50, 10, 20)
 F.conv3d(inputs, filters)
+
+# conv_transpose1d
+
