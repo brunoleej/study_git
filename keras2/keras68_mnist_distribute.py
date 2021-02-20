@@ -57,7 +57,7 @@ strategy = tf.distribute.MirroredStrategy(cross_device_ops=\
 )
 
 # with 문 : 객체의 라이프사이클(생성 >> 사용 >> 소멸)
-# model ~ compile 까지 scope에 넣어준다. >> 분산해서 처리하겠다.
+# model ~ compile 까지 scope에 넣은 후 분산처리
 with strategy.scope() :
     model = Sequential()
     model.add(Conv2D(filters=16, kernel_size=(2,2), padding='same', strides=1, input_shape=(28,28,1)))
