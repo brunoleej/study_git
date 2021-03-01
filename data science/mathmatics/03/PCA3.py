@@ -7,7 +7,7 @@ from sklearn.decomposition import PCA
 
 iris = load_iris()
 
-N = 10 # 앞의 10송이만 선택
+N = 10  # 앞의 10송이만 선택
 X = iris.data[:N, :2] # 꽃받침 길이와 꽃받침 폭만 선택
 
 pca1 = PCA(n_components=1)
