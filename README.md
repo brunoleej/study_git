@@ -11,7 +11,9 @@
 
 
 ## Using Techniques
-- C, Python, C#
+- C
+- Python
+- C#
 
 ## Blog
 https://lass-os.tistory.com/
