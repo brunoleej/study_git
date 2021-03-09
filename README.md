@@ -10,4 +10,4 @@
 - C, Python, C#
 
 ## Blog
-[blog]: https://lass-os.tistory.com/
+https://lass-os.tistory.com/
