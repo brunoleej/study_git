@@ -18,4 +18,3 @@ plt.xticks([0, 180, 360])
 plt.title("$xp(x)$")
 plt.xlabel("$x$ (도)")\
 plt.show()
-# pyplot
