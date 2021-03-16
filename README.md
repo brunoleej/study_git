@@ -12,8 +12,8 @@
 
 
 ## Skills
-Language : C, Python, C#
-DataBase : MongoDB, ORACLE, MYSQL
+- Language : C, Python, C#
+- DataBase : MongoDB, ORACLE, MYSQL
 
 ## Blog
 https://lass-os.tistory.com/
