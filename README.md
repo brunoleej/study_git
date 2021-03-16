@@ -17,7 +17,7 @@
 - etc : Git
 
 ## Blog
-https://lass-os.tistory.com/
+- Website : https://lass-os.tistory.com/
 
 ## Contact Me
 - Email : kg05903123@gmail.com
