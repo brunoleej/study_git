@@ -20,4 +20,4 @@
 https://lass-os.tistory.com/
 
 ## Contact Me
-kg05903123@gmail.com
+- Email : kg05903123@gmail.com
