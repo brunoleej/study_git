@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
 mu = 0
 std = 1
 rv = sp.stats.norm(mu, std)
