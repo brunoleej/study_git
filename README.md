@@ -11,11 +11,13 @@
 ![download](https://user-images.githubusercontent.com/62800365/110494254-c64bb700-8136-11eb-92e6-05c130522ac1.jpg)
 
 
-## Using Techniques
-- C
-- Python
-- C#
+## Skills
+- Language : C, Python, C#
+- DataBase : MongoDB, ORACLE, MYSQL
+- etc : Git, LaTex, Markdown
 
 ## Blog
-https://lass-os.tistory.com/
+- Website : https://lass-os.tistory.com/
 
+## Contact Me
+- Email : kg05903123@gmail.com
