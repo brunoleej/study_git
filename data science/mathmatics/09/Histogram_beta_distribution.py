@@ -8,6 +8,7 @@ def estimate_beta(x):
     a = x_bar * (x_bar * (1 - x_bar) / s2 - 1)
     b = (1 - x_bar) * (x_bar * (1 - x_bar) / s2 - 1)
     return a, b
+
 params = estimate_beta(x)
 print(params)
 
