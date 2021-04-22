@@ -7,7 +7,7 @@
 
 # Hash_ex1 연습의 해쉬 테이블 코드에 Chaining 기법으로 충돌해결 코드를 추가
     # 1. 해쉬 함수 : key % 8
-    # 2. 해쉬 키 생성 : hash(data)
+    # 2. 해쉬 키 생성 : hash(data)1
 
 import Hash_ex1
 
