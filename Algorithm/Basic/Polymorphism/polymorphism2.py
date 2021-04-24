@@ -1,4 +1,5 @@
 # 메소드명을 동일하게 해서 같은 모양의 코드가 다른 동작을 하도록 하는 다형성의 예
+
 class SalesWorker:
     def __init__(self, name):
         self.name = name
