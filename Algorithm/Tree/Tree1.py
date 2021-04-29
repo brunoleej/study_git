@@ -28,6 +28,8 @@
 class Node:
     def __init__(self, value):
         self.value = value
+        # self.left = None
+        # self.right = None
         self.left, self.right = None, None  # 이렇게도 한번에 여러 변수를 초기화할 수 있음
     
 
