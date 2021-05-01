@@ -37,7 +37,6 @@
 # n의 값에 상관없이 변수 n, 변수 fac, 변수 index만 필요함
 # 공간 복잡도는 O(1)
 # 공간 복잡도 계산은 실제 알고리즘 실행 시 사용되는 저장공간을 계산하면 됨
-
 def factorial(n):
     fac = 1
     for index in range(2, n + 1):
