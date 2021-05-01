@@ -9,7 +9,6 @@ ourteam = [elf, fighter1]
 for attacker in ourteam:
     attacker.attack()
 '''
-
 class Elf:
     def __init__(self, name):
         self.name = name
