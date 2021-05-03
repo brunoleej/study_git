@@ -10,6 +10,7 @@ def calc_square(digit):
 print(calc_square(2))   # 4
 
 # 1. func1이라는 변수에 함수를 할당 가능
+
 func1 = calc_square
 print(calc_square)  # <function calc_square at 0x000001E3096E7160>
 
