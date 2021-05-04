@@ -1,6 +1,5 @@
 # 이진 탐색 트리에 데이터 넣기
     # 이진 탐색 트리 조건에 부합하게 데이터를 넣어야 함
-
 class Node:
     def __init__(self, value):
         self.value = value
