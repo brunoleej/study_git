@@ -1,5 +1,4 @@
 # 4. 함수의 결과값으로 함수를 리턴할 수도 있음1
-
 def longger(msg):
     message = msg
     def msg_creator():  # <-- 함수 안에 함수를 만들 수도 있음
