@@ -1,5 +1,4 @@
 # 3. 함수를 다른 함수에 인자로 넣을 수도 있음
-
 def calc_square(digit):
     return digit * digit
 
