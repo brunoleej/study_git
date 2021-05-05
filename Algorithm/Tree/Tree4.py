@@ -11,7 +11,6 @@
 # Child Node가 두 개인 Node 삭제
     # 1. 삭제할 Node의 오른쪽 자식 중, 가장 작은 값을 삭제할 Node의 Parent Node가 가리키도록 한다.
     # 2. 삭제할 Node의 왼쪽 자식 중, 가장 큰 값을 삭제할 Node의 Parent Node가 가리키도록 한다.
-
 class Node:
     def __init__(self, value):
         self.value = value
