@@ -7,5 +7,6 @@
 # Output
 # 첫째 줄에 A-B를 출력한다.
 
+# Ans
 a,b = map(int,input('Insert number:').split(','))
 print('a - b = ',a-b)
