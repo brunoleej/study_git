@@ -6,7 +6,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
 import numpy as np
-from numpy import array
 
 # Data
 x_train = np.array([1,2,3,4,5,6,7,8,9,10])
