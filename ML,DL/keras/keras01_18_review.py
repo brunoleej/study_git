@@ -4,7 +4,7 @@ from sklearn.datasets import load_boston
 
 dataset = load_boston()
 
-#1. DATA
+# DATA
 
 # x = np.array(range(1,100))
 # y = np.array(range(101,200))
