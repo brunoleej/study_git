@@ -1,13 +1,11 @@
 # 입력받는 잇풋 데이터도 다수, 아웃풋도 다수일 때
 # 예측하고자 하는 y 값이 여러개일 때
 # 주의 : 행렬의 형태(shape)를 통일시켜야 한다. - 특히 '열 ' 중요
-
 # 다 : 다 mlp
 # input = 3 , output = 3
-
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(301, 401), range(1, 101)] ) # 0 ~ 99 / 301 ~ 400 / 1 ~ 100 --->  (3, 100)
 y = np.array( [range(711, 811), range(1, 101), range(201, 301)] )  
 
