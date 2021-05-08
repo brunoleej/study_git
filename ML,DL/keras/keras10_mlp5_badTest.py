@@ -1,13 +1,12 @@
 #실습
 # 1. R2         <= 0.5 (음수 안\안 됨)
 # 2. layer      >= 5
-#3. node        >= 10
-#4. batch_size  <= 8
-#5. epochs      >= 30
-
+# 3. node        >= 10
+# 4. batch_size  <= 8
+# 5. epochs      >= 30
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(1, 101), range(101,201), range(201, 301), range(301, 401)] ) 
 y = np.array([range(511,611), range(611,711)])  
 # print(x.shape)          #(5, 100)
