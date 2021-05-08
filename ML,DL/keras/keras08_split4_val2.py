@@ -3,7 +3,6 @@
 
 # train_test_split(x, y, train_size=0.8, shuffle=True)한 후, 
 # x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2, shuffle=False) 한 번 더 쪼갠다.
-
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
