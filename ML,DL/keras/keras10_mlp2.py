@@ -1,11 +1,8 @@
 # 실습 train과 test data를 분리해서 소스를 완성하시오
 # train_test_split 사용
 # random_state
-
 # 다 : 1 mlp
 # input = 3 , output = 1
- 
-
 import numpy as np
 
 # DATA
