@@ -1,9 +1,8 @@
 # 다 : 1 mlp 함수형
 # keras10_mlp2.py 를 함수형으로 바꾸시오
-
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(301, 401), range(1, 101)] ) 
 y = np.array(range(711, 811))                                
 # print(x.shape)          #(3, 100)
@@ -20,8 +19,7 @@ print(x_train.shape)      #(80, 3)
 print(y_train.shape)      #(80,)
 print(x_test.shape)       #(20, 3)
 
-
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Input
 
