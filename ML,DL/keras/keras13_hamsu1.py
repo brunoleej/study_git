@@ -1,11 +1,9 @@
 # 모델
 #[**1] Model()
 #[2] Sequential()
-
-
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(1, 101), range(101,201), range(201, 301), range(301, 401)] ) 
 y = np.array([range(511,611), range(611,711)])  
 # print(x.shape)          #(5, 100)
