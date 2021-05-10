@@ -3,11 +3,9 @@
 # verbose = 1 : [==============================] - 0s 1ms/step loss , mae , val_loss , val_mae 모두 출력, 디폴트값
 # verbose = 2 :  0s - loss , mae , val_loss , val_mae: 37.2005
 # verbose = 3 이상 : Epoch 2/100 (그 이후 과정 안 보여줌)
-
-
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( [range(100), range(1, 101), range(101,201), range(201, 301), range(301, 401)] ) 
 y = np.array([range(511,611), range(611,711)])  
 # print(x.shape)          #(5, 100)
