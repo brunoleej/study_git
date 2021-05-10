@@ -1,8 +1,6 @@
 # ensemble ( 2 - 1 - 1)
-
 # 실습 
 # 다 : 1 앙상블을 구현하시오 (y2 제거, 분기하는 부분을 뺀다.)
-
 import numpy as np
 
 # Data

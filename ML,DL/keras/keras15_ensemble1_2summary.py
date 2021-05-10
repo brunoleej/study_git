@@ -2,8 +2,6 @@
 # 모델 병합 : concatenate
 # 모델 분기
 # summary 분석
-
-
 import numpy as np
 
 # Data
@@ -27,7 +25,6 @@ from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Input
 
 # 두 모델을 합쳤다가 다시 분리하는 과정
-
 # Model 1 (3-4-5)
 input1 = Input(shape=(3,)) #input = 3
 dense1 = Dense(4, activation = 'relu')(input1)
