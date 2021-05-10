@@ -1,9 +1,8 @@
 # 1 : 다 mlp 함수형
 # keras10_mlp6.py 를 함수형으로 바꾸시오
-
 import numpy as np
 
-#1 DATA
+# DATA
 x = np.array( range(100) )
 y = np.array( [range(711, 811), range(1, 101), range(201, 301)] )  
 

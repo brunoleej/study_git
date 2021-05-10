@@ -1,11 +1,9 @@
 # ensemble (2 - 1 - 2)
 # 모델 병합 : concatenate
 # 모델 분기
-
-
 import numpy as np
 
-#1. DATA
+# DATA
 x1 = np.array( [range(100), range(301,401), range(1,101)] )         #(3, 100)
 y1 = np.array( [range(711, 811), range(1, 101), range(201, 301)] )  
 
@@ -24,8 +22,7 @@ x2_train, x2_test, y2_train, y2_test = train_test_split (x2, y2, shuffle=False, 
 # train (80, 3)
 # test (20, 3)
 
-#2. Modeling
-
+# Modeling
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Input
 
