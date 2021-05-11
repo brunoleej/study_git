@@ -6,6 +6,7 @@
 # 다형성은 코드의 양을 줄이고, 여러 객체 타입을 하나의 타입으로 관리가 가능하여 유지보수에 좋음
 
 # Method Override (메소드 재정의)도 다형성의 한 예입니다.
+
 # 클래스 선언
 class Person:
     def __init__(self, name):
