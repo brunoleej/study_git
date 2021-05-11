@@ -32,8 +32,8 @@ parttimer1 = PartTimer()
 # I am a worker
 # I an a part-timer and student
 '''
-
 # super() 내장함수를 사용하면 위의 문제를 해결할 수 있음
+
 # 클래스 선언
 class Person:
     def __init__(self):
