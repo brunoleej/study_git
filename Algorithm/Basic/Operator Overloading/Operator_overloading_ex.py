@@ -1,4 +1,5 @@
 # 아래 코드를 실행시키면서, 출력 값이 왜 이렇게 나왔는지 이해하기(연산자 오버로딩 이해)
+
 class Quadrangle:
     def __init__(self, width, height):
         self.width = width
