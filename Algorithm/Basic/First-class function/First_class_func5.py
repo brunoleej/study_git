@@ -1,4 +1,5 @@
 # 5. 함수의 결과값으로 함수를 리턴할 수도 있음2
+
 def html_creator(tag):
     def text_wrapper(msg):
         print('<{0}>{1}<{0}>'.format(tag, msg))
