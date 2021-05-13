@@ -1,4 +1,5 @@
 # 1. List Comprehension을 사용해서 1~100 까지의 숫자 출력하기
+
 num = list([i for i in range(1, 101)])
 print(num)
 '''
