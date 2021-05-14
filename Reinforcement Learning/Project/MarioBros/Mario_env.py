@@ -1,7 +1,6 @@
 import gym_super_mario_bros
 
 env = gym_super_mario_bros.make('SuperMarioBros-v0')
-
 env.reset()
 
 print(env.action_space.n)   # 256
