@@ -12,7 +12,6 @@ import collections
 import cv2
 import matplotlib.pyplot as plt
 
-
 class MaxAndSkipEnv(gym.Wrapper):
     def __init__(self, env=None, skip=4):
         """Return only every `skip`-th frame"""
