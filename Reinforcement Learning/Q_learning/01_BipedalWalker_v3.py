@@ -1,5 +1,6 @@
 # Library import
 import gym
+
 # Environment 생성
 env = gym.make('BipedalWalker-v3')
 
