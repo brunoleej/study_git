@@ -4,6 +4,7 @@ env = gym.make('CartPole-v0')
 env.reset()
 random_episodes = 0
 reward_sum = 0
+
 while random_episodes < 10:
     env.render()
     action = env.action_space.sample()
