@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from gym.envs.registration import register
 import random as pr
 
+
 env = gym.make('FrozenLake-v0')
 
 # Initialize table with all zeros
