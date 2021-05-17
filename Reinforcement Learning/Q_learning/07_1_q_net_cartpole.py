@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'    # default value = 0  From http://stackoverflow.com/questions/35911252/disable-tensorflow-debugging-information
 
 import tensorflow as tf
