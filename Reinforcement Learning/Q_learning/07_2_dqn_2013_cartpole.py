@@ -3,7 +3,6 @@ import tensorflow as tf
 import random
 from collections import deque
 from dqn import dqn
-
 import gym
 from gym import wrappers
 
