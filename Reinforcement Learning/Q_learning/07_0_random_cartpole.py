@@ -2,6 +2,7 @@ import gym
 
 env = gym.make('CartPole-v0')
 env.reset()
+
 random_episodes = 0
 reward_sum = 0
 
