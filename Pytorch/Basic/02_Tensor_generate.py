@@ -87,7 +87,6 @@ m1 = torch.FloatTensor([[3, 3]])
 m2 = torch.FloatTensor([[2, 2]])
 print(m1 + m2)  # tensor([[5., 5.]])
 
-
 # Vector + scalar
 m1 = torch.FloatTensor([[1, 2]])
 m2 = torch.FloatTensor([3]) # [3] --> [3,3]
