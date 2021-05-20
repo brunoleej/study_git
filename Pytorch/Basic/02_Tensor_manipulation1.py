@@ -38,6 +38,7 @@ print(t)
 tensor([[1., 2.],
         [3., 4.]])
 '''
+
 print(t.mean())  # tensor(2.5000) --> 4개의 원소의 평균인 2.5 생성
 print(t.mean(dim=0))    # tensor([2., 3.]) --> dim = 0은 첫번째 차원(행)
 print(t.mean(dim=1))    # tensor([1.5000, 3.5000])
