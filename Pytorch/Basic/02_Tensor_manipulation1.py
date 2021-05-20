@@ -11,6 +11,7 @@ print(m1.matmul(m2))
 tensor([[ 5.],
         [11.]])
 '''
+
 m1 = torch.FloatTensor([[1, 2], [3, 4]])
 m2 = torch.FloatTensor([[1], [2]])
 
