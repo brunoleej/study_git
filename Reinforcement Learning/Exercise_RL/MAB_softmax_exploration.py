@@ -6,7 +6,6 @@ import random
 
 env = gym.make('BanditTenArmedGaussian-v0')
 
-
 # number of round (iterations)
 num_rounds = 20000
 
