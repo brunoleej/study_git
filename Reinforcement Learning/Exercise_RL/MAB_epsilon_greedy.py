@@ -28,6 +28,7 @@ def epsilon_greedy(epsilon):
         action = np.argmax(Q)
     return action
 
+
 for i in range(num_rounds):
     # Select the arm using epsilon greedy
     arm = epsilon_greedy(0.5)
