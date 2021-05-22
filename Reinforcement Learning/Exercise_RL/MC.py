@@ -34,6 +34,7 @@ print(arc)
  1.52319644 1.53906307 1.5549297  1.57079633]
 '''
 
+
 # generate_points 함수를 정의합니다. 이 함수는 사각형 내부에 임의의 점을 생성합니다.
 def generate_points(size):
     x = random.random()*size
