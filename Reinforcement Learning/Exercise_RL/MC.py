@@ -40,7 +40,6 @@ def generate_points(size):
     y = random.random()*size
     return (x,y)
 
-
 # is_in_circle 함수를 정의합니다. 이 함수는 성생된 점이 원 안에 속하는지를 확인합니다.
 def is_in_circle(point, size):
     return math.sqrt(point[0] ** 2 + point[1] ** 2) <= size
