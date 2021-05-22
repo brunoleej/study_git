@@ -13,7 +13,6 @@ points_inside_square = 0
 sample_size = 1000
 arc = np.linspace(0, np.pi / 2, 100)
 
-
 print(arc)
 '''
 [0.         0.01586663 0.03173326 0.04759989 0.06346652 0.07933315
