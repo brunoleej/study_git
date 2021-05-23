@@ -32,7 +32,6 @@ plt.ion()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Use Replay Memory
-
 Transition = namedtuple('Transition',('state', 'action','next_state','reward'))
 
 class ReplayMemory(object):
