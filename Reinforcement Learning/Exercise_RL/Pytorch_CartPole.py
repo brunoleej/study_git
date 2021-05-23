@@ -20,7 +20,6 @@ import torch.optim as optim
 import torch.nn.functional as F
 import torchvision.transforms as T
 
-
 env = gym.make('CartPole-v0').unwrapped
 
 # set up matplotlib
