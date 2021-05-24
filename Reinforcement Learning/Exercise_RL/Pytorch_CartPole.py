@@ -53,6 +53,7 @@ class ReplayMemory(object):
     def __len__(self):
         return len(self.memory)
 
+
 # DQM Algorithm
 # Q-Network
 class DQN(nn.Module):
