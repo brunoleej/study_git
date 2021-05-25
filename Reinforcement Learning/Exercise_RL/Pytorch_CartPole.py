@@ -167,7 +167,6 @@ def select_action(state):
     else:
         return torch.tensor([[random.randrange(n_actions)]], device=device, dtype=torch.long)
 
-
 episode_durations = []
 
 
