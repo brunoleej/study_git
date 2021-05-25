@@ -169,7 +169,6 @@ def select_action(state):
 
 episode_durations = []
 
-
 def plot_durations():
     plt.figure(2)
     plt.clf()
