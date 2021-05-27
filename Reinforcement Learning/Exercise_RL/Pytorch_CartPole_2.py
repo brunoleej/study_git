@@ -64,7 +64,6 @@ class DQNCartPoleSolver():
             state = self.preprocess_state(self.env.reset())
             done = False
             i = 0
-            
             while not done:
                 action = self.choose_action(state, self.get_epsilon(e))
                 next_state, reward, done, _ = self.env.step(action)
