@@ -47,6 +47,7 @@ class DQNCartPoleSolver():
         x_batch, y_batch = [], []
         minibatch = random.sample(
             self.memory, min(len(self.memory), batch_size))
+        
         for state, action, reward, next_state, done in minibatch:
             y_target = self.model.predict(state)
             y_target[0][action] = reward if done else reward + self.gamma * np.max(self.model.predict(next_state)[0])
