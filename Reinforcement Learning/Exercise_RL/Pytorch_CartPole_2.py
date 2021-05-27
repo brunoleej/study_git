@@ -52,7 +52,6 @@ class DQNCartPoleSolver():
             y_target[0][action] = reward if done else reward + self.gamma * np.max(self.model.predict(next_state)[0])
             x_batch.append(state[0])
             y_batch.append(y_target[0])
-        
         self.model.fit(np.array(x_batch), np.array(y_batch), batch_size=len(x_batch), verbose=0)
         if self.epsilon > self.epsilon_min:
             self.epsilon *= self.epsilon_decay
