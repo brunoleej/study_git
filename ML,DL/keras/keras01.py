@@ -1,5 +1,4 @@
 # Deep learning Basic Model
-
 import numpy as np
 import tensorflow as tf 
 
@@ -18,7 +17,7 @@ model.add(Dense(4))
 model.add(Dense(1)) #최종 아웃풋 1개
 
 # Compile
-model.compile(loss = 'mse', optimizer='adam') #머신이 이해할 수 있도록 컴파일 
+model.compile(loss = 'mse', optimizer='adam') # 머신이 이해할 수 있도록 컴파일 
             #loss가 작은 걸 기준으로 mse(평균 제곱 오차) 잡는다 / 최적화 adam을 사용한다  / 최적의 weight를 구할 것임(=최소의 loss값)
 # Fit
 model.fit(x, y, epochs= 1000, batch_size=1)  #정제된 데이터를 훈련시킨다. 
