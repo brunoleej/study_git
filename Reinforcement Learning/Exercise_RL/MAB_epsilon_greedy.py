@@ -5,7 +5,6 @@ import numpy as np
 # Initialize Environment
 env = gym.make('BanditTenArmedGaussian-v0')
 
-
 print(env.action_space.n)
 
 # Epsilon-greedy policy
