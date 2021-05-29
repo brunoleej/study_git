@@ -5,7 +5,6 @@ from sklearn.datasets import load_boston
 dataset = load_boston()
 
 # DATA
-
 # x = np.array(range(1,100))
 # y = np.array(range(101,200))
 
@@ -29,7 +28,6 @@ y = dataset.target
 
 # x = x/711.
 
-
 from sklearn.model_selection import train_test_split
 x_train, x_test, y_train, y_test = train_test_split\
     (x,y,train_size=0.8, shuffle=True,random_state=55)
@@ -45,7 +43,7 @@ x_train = scaler.transform(x_train)
 x_test = scaler.transform(x_test)
 x_val = scaler.transform(x_val)
 
-#2. Modeling
+# Modeling
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.layers import Dense, Input
 
@@ -92,7 +90,7 @@ model = Model(inputs = input1, outputs = outputs)
 
 model.summary()
 
-#3. Cpmpile, Train
+# Compile, Train
 model.compile(loss='mse', optimizer='adam', metrics=['mae'])
 
 from tensorflow.keras.callbacks import EarlyStopping
@@ -100,7 +98,7 @@ earlystopping = EarlyStopping(monitor='loss',mode='min',patience=5)
 model.fit(x_train, x_train,epochs=10,batch_size=1, \
     validation_data=(x_val, y_val), verbose=1,callbacks=[earlystopping])
 
-#4. Evalute, Predict
+# Evalute, Predict
 loss = model.evaluate(x_test,y_test,batch_size=1)
 print("loss : ", loss)
 
