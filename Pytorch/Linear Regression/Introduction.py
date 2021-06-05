@@ -25,6 +25,7 @@ import torch
 # 앞서 텐서에 대해서 배웠는데, 모델을 학습시키기 위한 데이터는 파이토치의 텐서의 형태(torch.tensor)를 가지고 있어야 합니다.
 # 그리고 입력과 출력을 각기 다른 텐서에 저장할 필요가 있습니다. 이때 보편적으로 입력은 x, 출력은 y를 사용하여 표기합니다.
 # 여기서 x_train은 공부한 시간, y_train은 그에 맵핑되는 점수를 의미합니다.
+
 x_train = torch.FloatTensor([[1],[2],[3]])
 y_train = torch.FloatTensor([[2],[4],[6]])
 
