@@ -92,7 +92,6 @@ tensor([[1.9994]], requires_grad=True), Parameter containing:
 tensor([0.0014], requires_grad=True)]
 '''
 
-
 # H(x) 식에 입력 x로부터 예측된 y를 얻는 것을 forward 연산이라고 합니다.
 # 학습 전, prediction = model(x_train)은 x_train으로부터 예측값을 리턴하므로 forward 연산입니다.
 # 학습 후, pred_y = model(new_var)는 임의의 값 new_var로부터 예측값을 리턴하므로 forward 연산입니다.
