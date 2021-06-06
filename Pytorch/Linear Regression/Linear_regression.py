@@ -7,11 +7,11 @@ import torch.optim as optim
 # 현재 실습하고 있는 파이썬 코드를 재실행해도 다음에도 같은 결과가 나오도록 랜덤 시드(random seed)를 줍니다.
 torch.manual_seed(1)
 
+
 '''
 # Variable 선언
 x_train = torch.FloatTensor([[1],[2],[3]])
 y_train = torch.FloatTensor([[2],[4],[6]])
-
 
 print(x_train)
 print(x_train.shape)    # torch.Size([3, 1])
