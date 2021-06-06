@@ -7,7 +7,6 @@ torch.manual_seed(1)
 
 # 3개의 x로부터 하나의 y를 예측하는 문제
 # Hypothesis H(x) = w1x1 + w2x2 + w3x3 + b
-
 # Data
 x_train = torch.FloatTensor([[73, 80, 75],[93, 88, 93],[89, 91, 90],[96, 98, 100],[73, 66, 70]])
 y_train = torch.FloatTensor([[152], [185], [180], [196], [142]])
