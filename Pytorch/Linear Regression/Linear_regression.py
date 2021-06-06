@@ -12,6 +12,7 @@ torch.manual_seed(1)
 x_train = torch.FloatTensor([[1],[2],[3]])
 y_train = torch.FloatTensor([[2],[4],[6]])
 
+
 print(x_train)
 print(x_train.shape)    # torch.Size([3, 1])
 
