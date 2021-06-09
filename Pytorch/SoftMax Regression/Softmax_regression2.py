@@ -34,6 +34,7 @@ for epochs in range(EPOCHS + 1):
     if epochs % 100 == 0:
         print("EPOCHS: {:4d}/{} Cost: {:.6f}".format(epochs,EPOCHS, cost, cost.item()))
 
+
 '''
 EPOCHS:    0/1000 Cost: 1.098612
 EPOCHS:  100/1000 Cost: 0.761050
