@@ -3,7 +3,6 @@ from sklearn.datasets import load_digits
 
 digits = load_digits()
 
-
 print(digits.images[0])
 '''
 [[ 0.  0.  5. 13.  9.  1.  0.  0.]
