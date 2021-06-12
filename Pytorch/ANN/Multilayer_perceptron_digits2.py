@@ -8,7 +8,6 @@ digits = load_digits()
 X = digits.data
 Y = digits.target
 
-
 print("X Type: {}, Y Type: {}".format(X.dtype,Y.dtype)) # X Type: float64, Y Type: int32
 
 X = torch.tensor(X, dtype=torch.float32)
