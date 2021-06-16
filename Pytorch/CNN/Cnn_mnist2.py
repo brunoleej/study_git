@@ -15,7 +15,6 @@ torch.manual_seed(777)
 if device == 'cuda':
     torch.cuda.manual_seed_all(777)
 
-
 lr = 0.001
 EPOCHS = 15
 batch_size = 100
