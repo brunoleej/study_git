@@ -87,4 +87,3 @@ with torch.no_grad():
     correct_prediction = torch.argmax(prediction, 1) == Y_test
     accuracy = correct_prediction.float().mean()
     print('Accuracy : {}'.format(accuracy.item()))
-    
