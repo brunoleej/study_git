@@ -15,7 +15,6 @@ print(digits.images[0])
  [ 0.  0.  6. 13. 10.  0.  0.  0.]]
 '''
 
- 
 print(digits.target[0]) # 0
 print('전체 샘플 수 : {}'.format(len(digits.images)))   # 전체 샘플 수 : 1797
 
