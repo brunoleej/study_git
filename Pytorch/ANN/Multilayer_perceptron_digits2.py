@@ -53,4 +53,3 @@ plt.xlabel('Epochs')
 plt.ylabel('Cost')
 plt.title('Cost by Epochs')
 plt.show()
-
