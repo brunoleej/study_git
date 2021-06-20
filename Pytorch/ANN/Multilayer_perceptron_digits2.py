@@ -48,6 +48,7 @@ Epoch   80/100 Cost: 0.250527
 Epoch   90/100 Cost: 0.194673
 '''
 
+
 plt.plot(cost)
 plt.xlabel('Epochs')
 plt.ylabel('Cost')
