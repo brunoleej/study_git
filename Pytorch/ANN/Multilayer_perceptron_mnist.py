@@ -90,3 +90,4 @@ print("예측 결과 : {}".format(predicted))
 X_test_show = (X_test[index]).numpy()
 plt.imshow(X_test_show.reshape(28, 28), cmap='gray')
 print("이 이미지 데이터의 정답 레이블은 {:.0f}입니다".format(y_test[index]))
+
