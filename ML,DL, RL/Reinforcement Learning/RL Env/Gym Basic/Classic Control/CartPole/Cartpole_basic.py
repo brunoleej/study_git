@@ -1,7 +1,6 @@
 import gym
 
 env = gym.make('CartPole-v1')
-
 env.reset()
 
 print("Action Space : {}, Action Space Shape : {}".format(env.action_space, env.action_space.shape)) # Discrete(2) ()
