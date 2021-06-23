@@ -6,7 +6,6 @@ print("Action Space : {}, Action Space Shape : {}".format(env.action_space, env.
 print("Observation Space : {}, Observation Space Shape : {}".format(env.observation_space, env.observation_space.shape))    # Observation Space : Box(-3.4028234663852886e+38, 3.4028234663852886e+38, (4,), float32), Observation Space Shape : (4,)
 
 observation = env.reset()
-
 for i in range(1000):
     env.render()
     action = env.action_space.sample()
