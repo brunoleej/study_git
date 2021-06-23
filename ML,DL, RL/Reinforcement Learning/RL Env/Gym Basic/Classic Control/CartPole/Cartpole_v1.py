@@ -16,7 +16,6 @@ for i in range(1000):
 
     if done:
         break
-
 env.close()
 
 '''
