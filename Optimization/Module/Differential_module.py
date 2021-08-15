@@ -9,6 +9,7 @@ x1 = Symbol('x1')
 x2 = Symbol('x2')
 alpha = Symbol('a')
 
+# Initial point
 init_point = [x1,x2]
 
 # objective function
