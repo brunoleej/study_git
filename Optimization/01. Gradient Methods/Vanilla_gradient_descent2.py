@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
+
 # Hyperparameter
 threshold = 0.0003   # convergence threshold
 step_size = 0.01     # step-size factor
