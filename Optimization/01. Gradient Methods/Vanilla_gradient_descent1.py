@@ -58,7 +58,6 @@ computed_z = obj_func(computed_x1, computed_x2)
 graph2 = ax.scatter(computed_x1, computed_x2, computed_z, color='black', linewidth = 0.01)
 plt.show()
     
-    
 '''
 Prespecified threshold : 0.0003
 First two Norm : 0.044721359549995836
