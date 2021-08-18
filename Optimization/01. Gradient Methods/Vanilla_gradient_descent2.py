@@ -7,6 +7,7 @@ threshold = 0.0003   # convergence threshold
 step_size = 0.01     # step-size factor
 point_storage = []   # point history
 
+
 # initial point
 point = np.array([-2.0, 2.0])
 x, y = point  # decision variable
