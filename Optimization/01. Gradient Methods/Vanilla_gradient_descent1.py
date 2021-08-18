@@ -40,6 +40,7 @@ while True:
         print("Convergence at {} iterations".format(i))
         break     
         
+        
 # plotting 3d graph
 fig = plt.figure(figsize=(10,10))
 ax = fig.add_subplot(111, projection='3d')
