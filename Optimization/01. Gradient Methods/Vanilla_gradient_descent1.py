@@ -64,3 +64,4 @@ First two Norm : 0.044721359549995836
 Convergence Norm : 0.0002946122988598515
 Convergence at 247 iterations
 '''
+
