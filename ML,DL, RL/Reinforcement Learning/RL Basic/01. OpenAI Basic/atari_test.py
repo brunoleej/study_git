@@ -18,4 +18,3 @@ if __name__ == '__main__':
             break
     
     print('Episode done in : {}stpes, total Reward : {:.2f}'.format(total_stpes, total_reward))
-
