@@ -13,4 +13,3 @@ for _ in range(10):
     # print(reward)
     # print(done)
     print(info)
-    
