@@ -11,6 +11,3 @@ env = wrapper(env)
 
 states = (84, 84, 4)
 actions = env.action_space.n
-
-# Agent
-agent
