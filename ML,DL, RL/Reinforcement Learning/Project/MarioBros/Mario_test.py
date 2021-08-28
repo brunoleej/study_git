@@ -10,4 +10,3 @@ env = JoypadSpace(env.RIGHT_ONLY)
 env = wrapper(env)
 
 states = (84, 84, 4)
-ns = env.action_space.n
