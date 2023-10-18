@@ -1,21 +1,19 @@
 # Reinforcement Learning Researcher
 
 ## Research of Interest
-1. Satellite Collsion Avoidance Algorithm
-2. On the Combat Strategy of Unmanned Fighters
-3. Autonomous aircraft operation
+1. Reinforcement Learning
+2. Explainable Reinforcement Learning
+3. Autonomous Driving
 
-![images](https://user-images.githubusercontent.com/62800365/110494018-84bb0c00-8136-11eb-8a2c-ffd75ab2941f.jpg)
-![download](https://user-images.githubusercontent.com/62800365/110494254-c64bb700-8136-11eb-92e6-05c130522ac1.jpg)
-
+![How Tesla Is Using Artificial Intelligence to Create The Autonomous Cars Of The Future](https://github.com/brunoleej/study_git/assets/62800365/9e1a0fb2-b770-462c-9dad-4c91c4045026)
 
 ## Skills
-- Language : Python, C#
+- Language : Python, C++
 - DataBase : MongoDB, ORACLE, MYSQL
 - etc : Git, LaTex, Markdown
 
-## Blog
-- Website : https://lass-os.tistory.com/
+## Githubio
+- Website : https://brunoleej.github.io/
 
 ## Contact Me
-- Email : kg05903123@gmail.com
+- Email : leejisue@hanyang.ac.kr
